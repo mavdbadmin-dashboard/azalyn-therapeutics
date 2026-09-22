@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azalyn Therapeutics — Investor Presentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --violet: #7B2FBE;
+    --violet-light: #9B4FDE;
+    --teal: #00C9A7;
+    --dark: #0A0F1A;
+    --navy: #0D1526;
+    --white: #FFFFFF;
+    --gray: #8A94A6;
+    --card-bg: rgba(255,255,255,0.05);
+    --card-border: rgba(255,255,255,0.1);
+  }
+
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  .slide {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Reading progress bar */
+  #progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, #7B2FBE, #00C9A7);
+    z-index: 9999;
+    transition: width 0.15s ease;
+  }
+
+  /* Navigation dots */
+  #nav-dots {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 998;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .dot:hover { background: rgba(255,255,255,0.5); }
+  .dot.active { background: #7B2FBE; transform: scale(1.4); box-shadow: 0 0 8px rgba(123,47,190,0.8); }
+
+  /* Slide number */
+  .slide-num {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.25);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+
+  /* Logo watermark */
+  .logo-mark {
+    position: absolute;
+    top: 28px;
+    left: 40px;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.3);
+    z-index: 10;
+  }
+
+  .logo-mark span { color: #7B2FBE; }
+
+  /* Glassmorphism */
+  .glass {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #7B2FBE, #00C9A7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* BG image slides */
+  .bg-slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+
+  .bg-slide .slide-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== SLIDE 1 — COVER ===== */
+  #slide-1::before {
+    background-image: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1920');
+    background-size: cover;
+    background-position: center;
+  }
+  #slide-1::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10,15,26,0.78);
+    z-index: 1;
+  }
+
+  /* Particle canvas */
+  #particles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .nasdaq-tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: #7B2FBE;
+    border: 1px solid rgba(123,47,190,0.5);
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    background: rgba(123,47,190,0.1);
+    backdrop-filter: blur(8px);
+  }
+
+  .cover-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(64px, 10vw, 108px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .cover-sub {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(20px, 3vw, 36px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.42em;
+    margin-bottom: 36px;
+  }
+
+  .cover-divider {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #7B2FBE, #00C9A7, transparent);
+    margin: 0 auto 32px;
+  }
+
+  .cover-tagline {
+    font-size: 20px;
+    font-style: italic;
+    color: #00C9A7;
+    margin-bottom: 48px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .cover-footer {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.12em;
+    font-weight: 400;
+  }
+
+  .down-arrow {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+  }
+
+  .down-arrow svg { opacity: 0.5; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+  }
+
+  /* Particle animation */
+  @keyframes float-particle {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.5; }
+    100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    animation: float-particle linear infinite;
+    pointer-events: none;
+  }
+
+  /* ===== SLIDE 2 — INVESTMENT THESIS ===== */
+  #slide-2 {
+    background: #0A0F1A;
+    padding: 60px 60px;
+  }
+
+  .thesis-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    width: 100%;
+    max-width: 1300px;
+    align-items: center;
+  }
+
+  .thesis-left h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .thesis-left p {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 320px;
+  }
+
+  .thesis-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .thesis-card {
+    padding: 28px 24px;
+    border-left: 3px solid #7B2FBE;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+
+  .thesis-card:hover {
+    background: rgba(123,47,190,0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .thesis-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .thesis-card p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* ===== SLIDE 3 — PROBLEM ===== */
+  #slide-3::before {
+    background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1920');
+    background-size: cover;
+    background-position: center;
+  }
+  #slide-3::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10,15,26,0.82);
+    z-index: 1;
+  }
+
+  .problem-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 40px;
+  }
+
+  .slide-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: #7B2FBE;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .problem-content h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 800;
+    margin-bottom: 60px;
+  }
+
+  .stat-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .stat-card {
+    padding: 40px 32px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .stat-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  .stat-card .stat-label {
+    font-size: 14px;
+    color: var(--gray);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .problem-quote {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    font-style: italic;
+    line-height: 1.7;
+    max-width: 720px;
+    margin: 0 auto;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* ===== SLIDE 4 — AZA PLATFORM ===== */
+  #slide-4::before {
+    background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1920');
+    background-size: cover;
+    background-position: center;
+  }
+  #slide-4::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10,15,26,0.85);
+    z-index: 1;
+  }
+
+  .platform-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 60px;
+    position: relative;
+    z-index: 2;
+    align-items: center;
+  }
+
+  .platform-left h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 68px);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .platform-left p {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  .feature-block {
+    padding: 28px 28px;
+    margin-bottom: 16px;
+    transition: all 0.3s;
+    border-radius: 16px;
+  }
+
+  .feature-block:hover { background: rgba(123,47,190,0.06); transform: translateX(4px); }
+
+  .feature-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .feature-block h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #00C9A7;
+    margin-bottom: 8px;
+  }
+
+  .feature-block p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* ===== SLIDE 5 — PIPELINE ===== */
+  #slide-5 { background: #060B16; }
+
+  .pipeline-content {
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 60px;
+  }
+
+  .pipeline-content h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .pipeline-content .sub {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 48px;
+    letter-spacing: 0.05em;
+  }
+
+  .pipeline-asset {
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+    border-radius: 16px;
+  }
+
+  .pipeline-asset:hover { background: rgba(123,47,190,0.07); transform: translateX(4px); }
+
+  .pipeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+  }
+
+  .asset-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .asset-indication {
+    font-size: 13px;
+    color: #00C9A7;
+    font-weight: 500;
+  }
+
+  .asset-note {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 8px;
+  }
+
+  .stage-bar-container {
+    position: relative;
+    height: 32px;
+  }
+
+  .stage-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .stage-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .stage-track {
+    height: 8px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .stage-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #7B2FBE, #00C9A7);
+    width: 0%;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 12px rgba(123,47,190,0.5);
+  }
+
+  .stage-fill.animate { width: var(--fill-width); }
+
+  /* ===== SLIDE 6 — SCIENCE ===== */
+  #slide-6 { background: #060B16; }
+
+  .science-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 60px;
+    align-items: start;
+  }
+
+  .science-col {
+    padding: 36px 28px;
+    border-radius: 20px;
+    height: 100%;
+  }
+
+  .science-col.center-col {
+    background: rgba(0,201,167,0.04);
+    border: 1px solid rgba(0,201,167,0.2);
+    transform: scale(1.02);
+  }
+
+  .science-col h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid;
+  }
+
+  .col-red h3 { color: #FF6B6B; border-color: #FF6B6B; }
+  .col-teal h3 { color: #00C9A7; border-color: #00C9A7; }
+  .col-violet h3 { color: #9B4FDE; border-color: #9B4FDE; }
+
+  .science-col ul { list-style: none; padding: 0; }
+
+  .science-col ul li {
+    font-size: 13.5px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 14px;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .science-col ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .col-teal ul li::before { color: rgba(0,201,167,0.5); }
+
+  /* ===== SLIDE 7 — MARKET ===== */
+  #slide-7::before {
+    background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1920');
+    background-size: cover;
+    background-position: center;
+  }
+  #slide-7::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10,15,26,0.85);
+    z-index: 1;
+  }
+
+  .market-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 60px;
+  }
+
+  .market-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 40px 0;
+  }
+
+  .market-stat {
+    padding: 36px 20px;
+    text-align: center;
+    transition: all 0.3s;
+    border-top: 2px solid rgba(123,47,190,0.4);
+    border-radius: 16px;
+  }
+
+  .market-stat:hover { transform: translateY(-6px); background: rgba(123,47,190,0.05); }
+
+  .market-num {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .market-num.teal { color: #00C9A7; }
+  .market-num.violet { color: #9B4FDE; }
+
+  .market-stat .label {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .market-note {
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 28px;
+  }
+
+  /* ===== SLIDE 8 — COMPARABLE VALUATIONS ===== */
+  #slide-8 { background: #0A0F1A; }
+
+  .comps-content {
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 60px;
+  }
+
+  .comps-content h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .comps-content .sub {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 36px;
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .comp-table th {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    padding: 14px 20px;
+    text-align: left;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .comp-table td {
+    padding: 18px 20px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.2s;
+  }
+
+  .comp-table tr:hover td { background: rgba(255,255,255,0.03); }
+
+  .comp-table tr.highlight-row td {
+    background: linear-gradient(90deg, rgba(123,47,190,0.15), rgba(0,201,167,0.08));
+    color: #fff;
+    font-weight: 600;
+    border-top: 1px solid rgba(123,47,190,0.4);
+    border-bottom: 1px solid rgba(0,201,167,0.3);
+  }
+
+  .comp-table tr.highlight-row td:first-child {
+    border-left: 3px solid #7B2FBE;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-weight: 600;
+  }
+
+  .badge-violet { background: rgba(123,47,190,0.25); color: #B07FE0; }
+  .badge-teal { background: rgba(0,201,167,0.15); color: #00C9A7; }
+  .badge-gold { background: rgba(255,184,0,0.15); color: #FFB800; }
+
+  .comp-note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--gray);
+    font-style: italic;
+    padding: 14px 20px;
+    border-left: 2px solid rgba(0,201,167,0.4);
+    border-radius: 4px;
+    background: rgba(0,201,167,0.03);
+  }
+
+  /* ===== SLIDE 9 — REGULATORY PATHWAY ===== */
+  #slide-9 { background: #060B16; }
+
+  .reg-content {
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 60px;
+  }
+
+  .reg-content h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .reg-content .sub {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 56px;
+  }
+
+  .timeline {
+    position: relative;
+    padding: 0;
+    margin-bottom: 48px;
+  }
+
+  .timeline-track {
+    position: absolute;
+    top: 26px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(255,255,255,0.08);
+    z-index: 0;
+  }
+
+  .timeline-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #7B2FBE, #00C9A7);
+    width: 0%;
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .timeline-fill.animate { width: 80%; }
+
+  .timeline-items {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-item {
+    flex: 1;
+    text-align: center;
+    padding: 0 8px;
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #7B2FBE;
+    margin: 0 auto 16px;
+    border: 2px solid #0A0F1A;
+    box-shadow: 0 0 10px rgba(123,47,190,0.6);
+    transition: all 0.3s;
+  }
+
+  .timeline-item:hover .timeline-dot {
+    transform: scale(1.4);
+    box-shadow: 0 0 16px rgba(123,47,190,0.9);
+  }
+
+  .timeline-dot.teal {
+    background: #00C9A7;
+    box-shadow: 0 0 10px rgba(0,201,167,0.6);
+  }
+
+  .timeline-period {
+    font-size: 11px;
+    font-weight: 700;
+    color: #7B2FBE;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .timeline-period.teal { color: #00C9A7; }
+
+  .timeline-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+
+  .reg-note {
+    padding: 20px 24px;
+    border-left: 3px solid #00C9A7;
+    border-radius: 8px;
+    background: rgba(0,201,167,0.04);
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* ===== SLIDE 10 — IP ===== */
+  #slide-10 { background: #0A0F1A; }
+
+  .ip-content {
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 60px;
+  }
+
+  .ip-content h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: 800;
+    margin-bottom: 36px;
+  }
+
+  .ip-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 28px;
+  }
+
+  .ip-table th {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    padding: 12px 20px;
+    text-align: left;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .ip-table td {
+    padding: 18px 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+  }
+
+  .ip-table tr:first-child td {
+    background: rgba(123,47,190,0.06);
+  }
+
+  .ip-table td.status-cell { font-size: 14px; }
+
+  .ip-note {
+    padding: 20px 24px;
+    border-left: 3px solid #7B2FBE;
+    border-radius: 8px;
+    background: rgba(123,47,190,0.05);
+    font-size: 13px;
+    color: var(--gray);
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  /* ===== SLIDE 11 — TEAM ===== */
+  #slide-11 { background: #060B16; }
+
+  .team-content {
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 60px;
+    text-align: center;
+  }
+
+  .team-content h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .team-content .sub {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 48px;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .team-card {
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s;
+    border-top: 1px solid transparent;
+    border-radius: 20px;
+    background: linear-gradient(var(--dark), var(--dark)) padding-box,
+                linear-gradient(135deg, rgba(123,47,190,0.3), rgba(0,201,167,0.2)) border-box;
+    border: 1px solid transparent;
+  }
+
+  .team-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+  .team-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(123,47,190,0.4), rgba(0,201,167,0.3));
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
+
+  .team-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .team-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #7B2FBE;
+    margin-bottom: 14px;
+  }
+
+  .team-bio {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .team-note {
+    font-size: 13px;
+    color: var(--gray);
+    font-style: italic;
+    padding: 14px;
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 8px;
+    display: inline-block;
+  }
+
+  /* ===== SLIDE 12 — CAPITAL STRUCTURE ===== */
+  #slide-12 { background: #0A0F1A; }
+
+  .capital-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 60px;
+    align-items: center;
+  }
+
+  .capital-left h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 800;
+    margin-bottom: 32px;
+  }
+
+  .capital-detail {
+    margin-bottom: 20px;
+    padding: 20px 24px;
+    border-radius: 12px;
+    border-left: 3px solid rgba(123,47,190,0.5);
+  }
+
+  .capital-detail h4 {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.4);
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .capital-detail p {
+    font-size: 15px;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .capital-right h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  /* CSS Donut Chart */
+  .donut-chart {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto 32px;
+    position: relative;
+    background: conic-gradient(
+      #7B2FBE 0% 35%,
+      #5B2FA0 35% 65%,
+      #00C9A7 65% 75%,
+      #009B82 75% 90%,
+      #4B7BE5 90% 100%
+    );
+  }
+
+  .donut-hole {
+    position: absolute;
+    inset: 30px;
+    border-radius: 50%;
+    background: #0A0F1A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .donut-hole span {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.3;
+  }
+
+  .legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--gray);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ===== SLIDE 13 — MILESTONES ===== */
+  #slide-13 { background: #060B16; }
+
+  .milestones-content {
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 60px;
+  }
+
+  .milestones-content h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .milestones-content .sub {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 48px;
+  }
+
+  .milestone-row {
+    margin-bottom: 48px;
+  }
+
+  .milestone-row-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .milestone-row-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .milestone-row-label.violet-label { color: #7B2FBE; }
+  .milestone-row-label.teal-label { color: #00C9A7; }
+
+  .milestone-track {
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  .milestone-line {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .milestone-points {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .milestone-point {
+    flex: 1;
+    text-align: center;
+    padding-top: 4px;
+  }
+
+  .m-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+  }
+
+  .m-dot.violet {
+    background: #7B2FBE;
+    box-shadow: 0 0 12px rgba(123,47,190,0.6);
+    color: white;
+  }
+
+  .m-dot.teal {
+    background: #00C9A7;
+    box-shadow: 0 0 12px rgba(0,201,167,0.6);
+    color: #060B16;
+  }
+
+  .m-date {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .m-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+
+  /* ===== SLIDE 14 — SECTOR MOMENTUM ===== */
+  #slide-14::before {
+    background-image: url('https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1920');
+    background-size: cover;
+    background-position: center;
+  }
+  #slide-14::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10,15,26,0.84);
+    z-index: 1;
+  }
+
+  .sector-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 60px;
+    text-align: center;
+  }
+
+  .sector-content h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .sector-content .sub {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 48px;
+  }
+
+  .sector-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .sector-card {
+    padding: 40px 32px;
+    text-align: left;
+    transition: all 0.3s;
+    border-radius: 20px;
+  }
+
+  .sector-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+
+  .sector-card-icon {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .sector-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .sector-card p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  .sector-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== SLIDE 15 — CLOSE ===== */
+  #slide-15 { background: radial-gradient(ellipse at 50% 50%, #0F1525 0%, #060B16 70%); }
+
+  .close-content {
+    text-align: center;
+    max-width: 900px;
+    padding: 0 40px;
+  }
+
+  .close-content .slide-label { margin-bottom: 24px; }
+
+  .close-content h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5.5vw, 76px);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 52px;
+  }
+
+  .close-points {
+    list-style: none;
+    margin-bottom: 52px;
+    text-align: left;
+    display: inline-block;
+  }
+
+  .close-points li {
+    font-size: clamp(14px, 1.6vw, 18px);
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    line-height: 1.5;
+  }
+
+  .close-points li .icon { font-size: 22px; flex-shrink: 0; }
+
+  .close-points li strong { color: #fff; }
+
+  .close-statement {
+    font-size: 16px;
+    color: #00C9A7;
+    font-style: italic;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .contact-box {
+    padding: 24px 40px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    display: inline-block;
+  }
+
+  .contact-box p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  .contact-box a {
+    color: #7B2FBE;
+    text-decoration: none;
+  }
+
+  .contact-box a:hover { color: #00C9A7; }
+
+  /* ===== SLIDE HEADERS ===== */
+  .slide-header {
+    text-align: left;
+    margin-bottom: 40px;
+  }
+
+  .slide-header .slide-label { margin-bottom: 10px; }
+
+  .slide-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: 800;
+    margin: 0;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .anim-fade { animation: fadeIn 0.8s ease forwards; }
+  .anim-up { animation: fadeInUp 0.8s ease forwards; }
+  .anim-delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .anim-delay-2 { animation-delay: 0.2s; opacity: 0; }
+  .anim-delay-3 { animation-delay: 0.3s; opacity: 0; }
+  .anim-delay-4 { animation-delay: 0.4s; opacity: 0; }
+  .anim-delay-5 { animation-delay: 0.5s; opacity: 0; }
+  .anim-delay-6 { animation-delay: 0.6s; opacity: 0; }
+
+  /* Slide 2 title bg */
+  .bg-dark-navy { background: #0A0F1A; }
+
+  /* Section titles */
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* ===== SCIENCE SLIDE specific ===== */
+  #slide-6 .science-layout-wrapper {
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 40px;
+  }
+
+  #slide-6 h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    margin-bottom: 36px;
+    text-align: center;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    html { scroll-snap-type: none; }
+    .slide { height: auto; min-height: 100vh; padding: 60px 20px; }
+    .thesis-layout { grid-template-columns: 1fr; gap: 40px; }
+    .thesis-cards { grid-template-columns: 1fr; }
+    .platform-layout { grid-template-columns: 1fr; gap: 32px; }
+    .stat-cards { grid-template-columns: 1fr; }
+    .market-stats { grid-template-columns: repeat(2, 1fr); }
+    .science-layout { grid-template-columns: 1fr; }
+    .capital-layout { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .sector-cards { grid-template-columns: 1fr; }
+    .milestone-points { flex-wrap: wrap; gap: 20px; }
+    .milestone-point { flex: 0 0 calc(50% - 10px); }
+    #nav-dots { display: none; }
+    .comp-table { display: block; overflow-x: auto; }
+    .ip-table { display: block; overflow-x: auto; }
+  }
+
+  @media (max-width: 600px) {
+    .market-stats { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    .timeline-items { flex-wrap: wrap; gap: 24px; }
+    .timeline-item { flex: 0 0 calc(50% - 12px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress"></div>
+
+<!-- Nav Dots -->
+<div id="nav-dots">
+  <div class="dot active" onclick="goToSlide(0)" title="Cover"></div>
+  <div class="dot" onclick="goToSlide(1)" title="Investment Thesis"></div>
+  <div class="dot" onclick="goToSlide(2)" title="The Problem"></div>
+  <div class="dot" onclick="goToSlide(3)" title="AZA Platform"></div>
+  <div class="dot" onclick="goToSlide(4)" title="Pipeline"></div>
+  <div class="dot" onclick="goToSlide(5)" title="Science"></div>
+  <div class="dot" onclick="goToSlide(6)" title="Market"></div>
+  <div class="dot" onclick="goToSlide(7)" title="Comparable Valuations"></div>
+  <div class="dot" onclick="goToSlide(8)" title="Regulatory"></div>
+  <div class="dot" onclick="goToSlide(9)" title="IP"></div>
+  <div class="dot" onclick="goToSlide(10)" title="Team"></div>
+  <div class="dot" onclick="goToSlide(11)" title="Capital Structure"></div>
+  <div class="dot" onclick="goToSlide(12)" title="Milestones"></div>
+  <div class="dot" onclick="goToSlide(13)" title="Sector Momentum"></div>
+  <div class="dot" onclick="goToSlide(14)" title="Close"></div>
+</div>
+
+<!-- ===== SLIDE 1: COVER ===== -->
+<section class="slide bg-slide" id="slide-1">
+  <!-- Particles -->
+  <div id="particles-container"></div>
+
+  <div class="cover-content">
+    <div class="nasdaq-tag anim-fade anim-delay-1">NASDAQ: AZLN</div>
+    <h1 class="cover-title anim-up anim-delay-2">AZALYN</h1>
+    <p class="cover-sub anim-up anim-delay-3">THERAPEUTICS</p>
+    <div class="cover-divider anim-fade anim-delay-4"></div>
+    <p class="cover-tagline anim-fade anim-delay-5">Next-Generation Neuropsychiatry. Novel Chemistry.</p>
+    <p class="cover-footer anim-fade anim-delay-6">Investor Presentation &nbsp;·&nbsp; Direct Listing &nbsp;·&nbsp; $300–500M Target Valuation</p>
+  </div>
+
+  <div class="down-arrow" onclick="goToSlide(1)">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 5v14M5 12l7 7 7-7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">01 / 15</div>
+</section>
+
+<!-- ===== SLIDE 2: INVESTMENT THESIS ===== -->
+<section class="slide" id="slide-2" style="background:#0A0F1A;">
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="thesis-layout">
+    <div class="thesis-left">
+      <div class="slide-label">INVESTMENT THESIS</div>
+      <h2><span class="gradient-text">WHY<br>AZALYN</span></h2>
+      <p>Four structural advantages that no competitor in the psychedelic neuropsychiatry space can replicate.</p>
+    </div>
+    <div class="thesis-cards">
+      <div class="thesis-card glass">
+        <h3>NOVEL IP, NOT GENERIC PSILOCYBIN</h3>
+        <p>USPTO-allowed patent (Appl. 18/443,025) covering aza-substituted psilocin analogs. Differentiated nitrogen ring chemistry that Compass, Cybin, and MindMed do not hold.</p>
+      </div>
+      <div class="thesis-card glass">
+        <h3>SECTOR AT HISTORIC INFLECTION</h3>
+        <p>Compass Pathways: first-ever Phase 3 psilocybin success. Eli Lilly acquired ATAI for $3.8 billion. FDA finalized psychedelic trial guidance July 2026. The institutional door is open.</p>
+      </div>
+      <div class="thesis-card glass">
+        <h3>$300–500M VALUATION AT PEER DISCOUNT</h3>
+        <p>CMPS ~$800M (Phase 3). CYBN ~$400M (Phase 2). Azalyn enters pre-IND with superior, patented chemistry at a compelling entry point.</p>
+      </div>
+      <div class="thesis-card glass">
+        <h3>CLEAN NASDAQ STRUCTURE</h3>
+        <p>Asset acquisition from CSE-listed Noveris Health Sciences via SPV. Pristine cap table. No legacy baggage. Direct Nasdaq listing via F-1. Institutional-grade from day one.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">02 / 15</div>
+</section>
+
+<!-- ===== SLIDE 3: THE PROBLEM ===== -->
+<section class="slide bg-slide" id="slide-3">
+  <div class="problem-content">
+    <div class="slide-label">THE CRISIS</div>
+    <h2>Mental Health Is <span class="gradient-text">The Defining<br>Medical Challenge</span> Of Our Era</h2>
+    <div class="stat-cards">
+      <div class="stat-card glass">
+        <div class="stat-num gradient-text">1B+</div>
+        <div class="stat-label">People with mental health<br>disorders globally</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-num" style="color:#00C9A7;">30%</div>
+        <div class="stat-label">Depression patients with<br>no effective treatment</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-num" style="color:#9B4FDE;">$400B+</div>
+        <div class="stat-label">Annual economic burden<br>in the U.S. alone</div>
+      </div>
+    </div>
+    <p class="problem-quote">"The SSRI mechanism has not materially changed since Prozac launched in 1987. A new molecular approach is required."</p>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">03 / 15</div>
+</section>
+
+<!-- ===== SLIDE 4: AZA PLATFORM ===== -->
+<section class="slide bg-slide" id="slide-4">
+  <div class="platform-layout">
+    <div class="platform-left">
+      <div class="slide-label">THE SCIENCE</div>
+      <h2><span class="gradient-text">AZA<br>PLATFORM</span></h2>
+      <p style="color:var(--gray);font-size:15px;line-height:1.7;">A novel class of psychedelic-adjacent molecules — structurally distinct from every compound currently in clinical development.</p>
+    </div>
+    <div>
+      <div class="feature-block glass">
+        <div class="feature-icon">🔬</div>
+        <h3>NOVEL CHEMISTRY</h3>
+        <p>Nitrogen substitution in the psilocin indole ring creates structurally distinct analogs not found in nature — and not patentable by any competitor.</p>
+      </div>
+      <div class="feature-block glass">
+        <div class="feature-icon">🎯</div>
+        <h3>DIFFERENTIATED BINDING</h3>
+        <p>Modified 5-HT2A/2B/2C receptor binding profiles. Tunable pharmacokinetics via dimethylamine and diisopropylamine substituents — potentially shorter duration, improved therapeutic window.</p>
+      </div>
+      <div class="feature-block glass">
+        <div class="feature-icon">🛡️</div>
+        <h3>PATENT-PROTECTED</h3>
+        <p>U.S. Patent Appl. 18/443,025 — Notice of Allowance issued August 18, 2026. ~2041 expiry. Novel compound class with no off-patent competition. Period.</p>
+      </div>
+    </div>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">04 / 15</div>
+</section>
+
+<!-- ===== SLIDE 5: PIPELINE ===== -->
+<section class="slide" id="slide-5">
+  <div class="pipeline-content">
+    <div class="slide-label">CLINICAL PIPELINE</div>
+    <h2><span class="gradient-text">PIPELINE</span></h2>
+    <p class="sub">Four development programs across the neuropsychiatry spectrum</p>
+
+    <div class="pipeline-asset glass" data-observe>
+      <div class="pipeline-header">
+        <span class="asset-name">AZA-001</span>
+        <span class="asset-indication">Treatment-Resistant Depression</span>
+      </div>
+      <div class="stage-labels">
+        <span class="stage-label">DISCOVERY</span>
+        <span class="stage-label">PRE-CLINICAL</span>
+        <span class="stage-label">IND</span>
+        <span class="stage-label">PHASE 1</span>
+        <span class="stage-label">PHASE 2</span>
+        <span class="stage-label">PHASE 3</span>
+      </div>
+      <div class="stage-track"><div class="stage-fill" style="--fill-width:55%;"></div></div>
+      <p class="asset-note">API Synthesis underway at Applied Pharmaceutical Innovation (Alberta) · IND target Q2 2027</p>
+    </div>
+
+    <div class="pipeline-asset glass" data-observe>
+      <div class="pipeline-header">
+        <span class="asset-name">AZA-002</span>
+        <span class="asset-indication">PTSD</span>
+      </div>
+      <div class="stage-labels">
+        <span class="stage-label">DISCOVERY</span>
+        <span class="stage-label">PRE-CLINICAL</span>
+        <span class="stage-label">IND</span>
+        <span class="stage-label">PHASE 1</span>
+        <span class="stage-label">PHASE 2</span>
+        <span class="stage-label">PHASE 3</span>
+      </div>
+      <div class="stage-track"><div class="stage-fill" style="--fill-width:42%;"></div></div>
+      <p class="asset-note">Binding characterization underway · IND target Q3 2027</p>
+    </div>
+
+    <div class="pipeline-asset glass" data-observe>
+      <div class="pipeline-header">
+        <span class="asset-name">AZA-003</span>
+        <span class="asset-indication">Anxiety Disorders</span>
+      </div>
+      <div class="stage-labels">
+        <span class="stage-label">DISCOVERY</span>
+        <span class="stage-label">PRE-CLINICAL</span>
+        <span class="stage-label">IND</span>
+        <span class="stage-label">PHASE 1</span>
+        <span class="stage-label">PHASE 2</span>
+        <span class="stage-label">PHASE 3</span>
+      </div>
+      <div class="stage-track"><div class="stage-fill" style="--fill-width:25%;"></div></div>
+      <p class="asset-note">Lead optimization · IND target Q4 2027</p>
+    </div>
+
+    <div class="pipeline-asset glass" data-observe>
+      <div class="pipeline-header">
+        <span class="asset-name">AZA-Platform</span>
+        <span class="asset-indication">Addiction / Substance Use</span>
+      </div>
+      <div class="stage-labels">
+        <span class="stage-label">DISCOVERY</span>
+        <span class="stage-label">PRE-CLINICAL</span>
+        <span class="stage-label">IND</span>
+        <span class="stage-label">PHASE 1</span>
+        <span class="stage-label">PHASE 2</span>
+        <span class="stage-label">PHASE 3</span>
+      </div>
+      <div class="stage-track"><div class="stage-fill" style="--fill-width:12%;"></div></div>
+      <p class="asset-note">Target validation · 2028</p>
+    </div>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">05 / 15</div>
+</section>
+
+<!-- ===== SLIDE 6: SCIENCE DEEP DIVE ===== -->
+<section class="slide" id="slide-6">
+  <div style="width:100%;max-width:1300px;padding:0 40px;">
+    <div style="text-align:center;margin-bottom:36px;">
+      <div class="slide-label">SCIENCE DEEP DIVE</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,52px);font-weight:800;">The Case For <span class="gradient-text">New Molecular Chemistry</span></h2>
+    </div>
+    <div class="science-layout">
+      <div class="science-col glass col-red">
+        <h3>THE PROBLEM WITH EXISTING DRUGS</h3>
+        <ul>
+          <li>Psilocybin: off-patent, 4–6 hour duration, non-selective binding, zero IP protection for developers</li>
+          <li>Ketamine: dissociative, significant abuse potential, NMDA mechanism not ideal for all patient populations</li>
+          <li>SSRIs: delayed onset of weeks, 30% non-response rate, same core mechanism unchanged since 1987</li>
+          <li>Every major competitor (CMPS, CYBN, MNMD) is building on off-patent chemistry they cannot exclusively protect</li>
+        </ul>
+      </div>
+      <div class="science-col glass col-teal center-col">
+        <h3>THE AZA APPROACH</h3>
+        <ul>
+          <li>Aza-substitution = nitrogen atoms replace carbon at key positions in the psilocin indole ring</li>
+          <li>Creates a novel, patentable molecular entity — structurally distinct from everything in the prior art</li>
+          <li>Potentially: shorter duration of action (30–90 min vs. 4–6 hrs), improved therapeutic window</li>
+          <li>Transdermal delivery potential — removes clinic-only administration barrier</li>
+          <li>Active API synthesis at Applied Pharmaceutical Innovation (Alberta) — $146K program underway</li>
+        </ul>
+      </div>
+      <div class="science-col glass col-violet">
+        <h3>THE OPPORTUNITY</h3>
+        <ul>
+          <li>First — and currently only — company with USPTO-protected aza-psilocin IP</li>
+          <li>No direct competitor holds this compound class. It is not off-patent. It is not in the public domain.</li>
+          <li>Novel chemistry → novel patent → novel commercial exclusivity through ~2041</li>
+          <li>Compass, Cybin, MindMed all using off-patent chemistry subject to generic competition post-exclusivity</li>
+          <li>Eli Lilly acquiring ATAI demonstrates Big Pharma urgency to secure proprietary psychedelic IP</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">06 / 15</div>
+</section>
+
+<!-- ===== SLIDE 7: MARKET OPPORTUNITY ===== -->
+<section class="slide bg-slide" id="slide-7">
+  <div class="market-content">
+    <div class="slide-label">MARKET OPPORTUNITY</div>
+    <h2 style="font-family:'Syne',sans-serif;font-size:clamp(32px,4.5vw,56px);font-weight:800;margin-bottom:8px;">A <span class="gradient-text">Trillion-Dollar</span> Unmet Need</h2>
+    <p style="color:var(--gray);font-size:14px;margin-bottom:0;">The largest addressable market in medicine, at the earliest stage of molecular innovation</p>
+    <div class="market-stats">
+      <div class="market-stat glass">
+        <div class="market-num gradient-text">$400B+</div>
+        <div class="label">Global Mental Health<br>Market (Annual)</div>
+      </div>
+      <div class="market-stat glass">
+        <div class="market-num teal">$10.75B</div>
+        <div class="label">Psychedelic-Assisted Therapy<br>Market by 2027 (16.3% CAGR)</div>
+      </div>
+      <div class="market-stat glass">
+        <div class="market-num violet">$4.5B</div>
+        <div class="label">Treatment-Resistant<br>Depression Market</div>
+      </div>
+      <div class="market-stat glass">
+        <div class="market-num" style="color:#FFB800;">$800</div>
+        <div class="label">SPRAVATO FDA-Approved<br>Precedent Per Session (J&J)</div>
+      </div>
+    </div>
+    <p class="market-note">Even 0.1% market penetration at SPRAVATO-equivalent pricing represents <strong style="color:#fff;">multi-billion dollar revenue potential</strong> — before accounting for novel IP premium or out-licensing value.</p>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">07 / 15</div>
+</section>
+
+<!-- ===== SLIDE 8: COMPARABLE VALUATIONS ===== -->
+<section class="slide" id="slide-8">
+  <div class="comps-content">
+    <div class="slide-label">COMPARABLE VALUATIONS</div>
+    <h2><span class="gradient-text">PEERS VALIDATE</span><br>THE VALUATION</h2>
+    <p class="sub">Psychedelic neuropsychiatry companies trade at $300M–$1B+ at comparable stages</p>
+    <table class="comp-table glass">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Stage</th>
+          <th>Market Cap</th>
+          <th>Key Asset</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Compass Pathways (CMPS)</strong></td>
+          <td><span class="badge badge-gold">Phase 3</span></td>
+          <td>~$800M</td>
+          <td>COMP360 (psilocybin)</td>
+        </tr>
+        <tr>
+          <td><strong>Cybin (CYBN)</strong></td>
+          <td><span class="badge badge-teal">Phase 2/3</span></td>
+          <td>~$400M</td>
+          <td>CYB003 (deuterated psilocybin)</td>
+        </tr>
+        <tr>
+          <td><strong>MindMed (MNMD)</strong></td>
+          <td><span class="badge badge-teal">Phase 2/3</span></td>
+          <td>~$600M</td>
+          <td>MM-120 (LSD analog)</td>
+        </tr>
+        <tr>
+          <td><strong>ATAI Life Sciences</strong></td>
+          <td><span class="badge badge-gold">Phase 2</span></td>
+          <td style="color:#FFB800;">$3.8B <em style="font-size:11px;">(Acquired by Lilly)</em></td>
+          <td>DMT/MDMA portfolio</td>
+        </tr>
+        <tr class="highlight-row">
+          <td><strong>AZALYN (AZLN) ★</strong></td>
+          <td><span class="badge badge-violet">Pre-IND</span></td>
+          <td><strong style="color:#00C9A7;">$300–500M Target</strong></td>
+          <td><strong>AZA Platform — Novel, Patented</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="comp-note">ATAI acquired by Eli Lilly for $3.8B (closed September 11, 2026) — the most significant psychedelic biotech M&A event in history. Big Pharma has validated the sector thesis.</p>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">08 / 15</div>
+</section>
+
+<!-- ===== SLIDE 9: REGULATORY PATHWAY ===== -->
+<section class="slide" id="slide-9">
+  <div class="reg-content">
+    <div class="slide-label">REGULATORY STRATEGY</div>
+    <h2><span class="gradient-text">REGULATORY</span><br>PATHWAY</h2>
+    <p class="sub">A clear, well-defined path to the clinic — with FDA framework now fully established</p>
+    <div class="timeline">
+      <div class="timeline-track">
+        <div class="timeline-fill" id="timeline-fill"></div>
+      </div>
+      <div class="timeline-items">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-period">Q3 2026</div>
+          <div class="timeline-desc">API Synthesis<br>Complete</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-period">Q4 2026</div>
+          <div class="timeline-desc">Pre-IND Meeting<br>Request Filed</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-period">Q1 2027</div>
+          <div class="timeline-desc">Pre-IND FDA Meeting<br>+ IND-Enabling Studies</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot teal"></div>
+          <div class="timeline-period teal">Q2 2027</div>
+          <div class="timeline-desc">IND Filing<br>AZA-001</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot teal"></div>
+          <div class="timeline-period teal">Q3 2027</div>
+          <div class="timeline-desc">Phase 1 FIH<br>Initiation</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot teal"></div>
+          <div class="timeline-period teal">Q4 2027</div>
+          <div class="timeline-desc">Safety Data<br>+ BTD Application</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot teal"></div>
+          <div class="timeline-period teal">Q2 2028</div>
+          <div class="timeline-desc">Phase 2a<br>(if BTD granted)</div>
+        </div>
+      </div>
+    </div>
+    <div class="reg-note">
+      <strong style="color:#00C9A7;">FDA finalized psychedelic clinical trial guidance July 2026.</strong> Breakthrough Therapy Designation available for Treatment-Resistant Depression — 6+ BTDs granted in the psychedelic space since 2023. Azalyn's novel IP positions us as a priority candidate for early regulatory engagement.
+    </div>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">09 / 15</div>
+</section>
+
+<!-- ===== SLIDE 10: INTELLECTUAL PROPERTY ===== -->
+<section class="slide" id="slide-10">
+  <div class="ip-content">
+    <div class="slide-label">INTELLECTUAL PROPERTY</div>
+    <h2><span class="gradient-text">THE PATENT</span><br>PORTFOLIO</h2>
+    <table class="ip-table glass">
+      <thead>
+        <tr>
+          <th>Asset</th>
+          <th>Jurisdiction</th>
+          <th>Status</th>
+          <th>Coverage</th>
+          <th>Expiry</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:#fff;">U.S. Appl. 18/443,025</strong></td>
+          <td>United States</td>
+          <td class="status-cell">✅ <strong style="color:#00C9A7;">Notice of Allowance</strong><br><span style="font-size:11px;color:var(--gray);">Aug 18, 2026</span></td>
+          <td>Aza-substituted psilocin analogs + pharmaceutical compositions</td>
+          <td style="color:#00C9A7;font-weight:600;">~2041</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#fff;">PCT Filing</strong></td>
+          <td>International</td>
+          <td class="status-cell">🔄 <strong style="color:#FFB800;">In Progress</strong></td>
+          <td>Same compound class, global coverage</td>
+          <td>~2041</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#fff;">Synthesis Methods</strong></td>
+          <td>United States</td>
+          <td class="status-cell">📋 <strong style="color:var(--gray);">In Preparation</strong></td>
+          <td>Methods of synthesizing AZA compounds</td>
+          <td>~2041</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#fff;">Formulation Patents</strong></td>
+          <td>United States</td>
+          <td class="status-cell">📋 <strong style="color:var(--gray);">In Preparation</strong></td>
+          <td>Drug delivery & novel formulations</td>
+          <td>TBD</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="ip-note">The USPTO-allowed claims cover not only the compounds but their pharmaceutical compositions — broad protection that no competitor can design around without infringing. This is not a method-of-use patent. It is composition of matter.</p>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">10 / 15</div>
+</section>
+
+<!-- ===== SLIDE 11: MANAGEMENT TEAM ===== -->
+<section class="slide" id="slide-11">
+  <div class="team-content">
+    <div class="slide-label">LEADERSHIP</div>
+    <h2><span class="gradient-text">MANAGEMENT</span> TEAM</h2>
+    <p class="sub">Experienced operators at the intersection of biotech, capital markets, and neuropsychiatry</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">👤</div>
+        <div class="team-name">CEO — TBD</div>
+        <div class="team-title">CHIEF EXECUTIVE OFFICER</div>
+        <p class="team-bio">Senior biotech executive with capital markets experience and prior CNS drug development leadership. Track record of successful Nasdaq listings and clinical-stage company building.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">🔬</div>
+        <div class="team-name">CSO — TBD</div>
+        <div class="team-title">CHIEF SCIENTIFIC OFFICER</div>
+        <p class="team-bio">Medicinal chemistry expert with expertise in psychedelic pharmacology and novel indole ring chemistry. Background in receptor binding profiling and CNS drug design.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">🏥</div>
+        <div class="team-name">CMO — TBD</div>
+        <div class="team-title">CHIEF MEDICAL OFFICER</div>
+        <p class="team-bio">Clinical psychiatrist with Phase 1–3 IND experience in neuropsychiatry. Prior FDA interactions on psychedelic-adjacent compounds. Deep knowledge of BTD application process.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">⭐</div>
+        <div class="team-name">Chairman — TBD</div>
+        <div class="team-title">EXECUTIVE CHAIRMAN</div>
+        <p class="team-bio">Seasoned board-level executive with public company governance experience. Strategic relationships across institutional biotech investor community, investment banking, and regulatory affairs.</p>
+      </div>
+    </div>
+    <div class="team-note">Scientific Advisory Board — announcement forthcoming &nbsp;|&nbsp; Full management team disclosure in F-1 registration statement</div>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">11 / 15</div>
+</section>
+
+<!-- ===== SLIDE 12: CAPITAL STRUCTURE ===== -->
+<section class="slide" id="slide-12">
+  <div class="capital-layout">
+    <div class="capital-left">
+      <div class="slide-label">TRANSACTION OVERVIEW</div>
+      <h2><span class="gradient-text">CAPITAL</span><br>STRUCTURE</h2>
+      <div class="capital-detail glass">
+        <h4>Listing Type</h4>
+        <p>Direct Listing — F-1 Registration (Nasdaq)</p>
+      </div>
+      <div class="capital-detail glass">
+        <h4>Target Valuation</h4>
+        <p style="color:#00C9A7;">$300M – $500M</p>
+      </div>
+      <div class="capital-detail glass">
+        <h4>Transaction Structure</h4>
+        <p>Asset acquisition from Noveris Health Sciences (CSE) via clean SPV. No legacy dilution. No legacy liabilities.</p>
+      </div>
+      <div class="capital-detail glass">
+        <h4>Cap Table</h4>
+        <p>Pristine — institutional-grade from inception. No toxic financing. No convertible debt hangover.</p>
+      </div>
+      <div class="capital-detail glass">
+        <h4>Advisor</h4>
+        <p>MavDB Consulting, LLC — Capital Markets Strategy</p>
+      </div>
+    </div>
+    <div class="capital-right">
+      <h3><span class="gradient-text">USE OF PROCEEDS</span></h3>
+      <div class="donut-chart">
+        <div class="donut-hole">
+          <span>Use of<br>Proceeds</span>
+        </div>
+      </div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#7B2FBE;"></div>
+          <span>35% IND-Enabling Studies</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#5B2FA0;"></div>
+          <span>30% Phase 1 Clinical</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#00C9A7;"></div>
+          <span>10% IP Expansion</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#009B82;"></div>
+          <span>15% G&A / Working Capital</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#4B7BE5;"></div>
+          <span>10% Business Development</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">12 / 15</div>
+</section>
+
+<!-- ===== SLIDE 13: MILESTONES ===== -->
+<section class="slide" id="slide-13">
+  <div class="milestones-content">
+    <div class="slide-label">EXECUTION ROADMAP</div>
+    <h2><span class="gradient-text">KEY MILESTONES</span></h2>
+    <p class="sub">12 and 24-month operational and clinical milestones</p>
+
+    <div class="milestone-row">
+      <div class="milestone-row-label violet-label">● 12-MONTH MILESTONES</div>
+      <div class="milestone-track">
+        <div class="milestone-line"></div>
+        <div class="milestone-points">
+          <div class="milestone-point">
+            <div class="m-dot violet">✓</div>
+            <div class="m-date">Q3 2026</div>
+            <div class="m-label">API Synthesis<br>Complete</div>
+          </div>
+          <div class="milestone-point">
+            <div class="m-dot violet">→</div>
+            <div class="m-date">Q4 2026</div>
+            <div class="m-label">F-1 Filing<br>Initiated</div>
+          </div>
+          <div class="milestone-point">
+            <div class="m-dot violet">→</div>
+            <div class="m-date">Q4 2026</div>
+            <div class="m-label">Pre-IND Request<br>Submitted</div>
+          </div>
+          <div class="milestone-point">
+            <div class="m-dot violet">→</div>
+            <div class="m-date">Q1 2027</div>
+            <div class="m-label">Nasdaq Listing<br>Completed</div>
+          </div>
+          <div class="milestone-point">
+            <div class="m-dot violet">→</div>
+            <div class="m-date">Q1 2027</div>
+            <div class="m-label">Pre-IND FDA<br>Meeting</div>
+          </div>
+          <div class="milestone-point">
+            <div class="m-dot violet">→</div>
+            <div class="m-date">Q2 2027</div>
+            <div class="m-label">IND Filing<br>AZA-001</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="milestone-row">
+      <div class="milestone-row-label teal-label">● 24-MONTH MILESTONES</div>
+      <div class="milestone-track">
+        <div class="milestone-line"></div>
+        <div class="milestone-points">
+          <div class="milestone-point">
+            <div class="m-dot teal">→</div>
+            <div class="m-date">Q3 2027</div>
+            <div class="m-label">Phase 1 FIH<br>Initiation</div>
+          </div>
+          <div class="milestone-point">
+            <div class="m-dot teal">→</div>
+            <div class="m-date">Q3 2027</div>
+            <div class="m-label">AZA-002 IND<br>(PTSD)</div>
+          </div>
+          <div class="milestone-point">
+            <div class="m-dot teal">→</div>
+            <div class="m-date">Q4 2027</div>
+            <div class="m-label">Phase 1 Safety<br>Readout</div>
+          </div>
+          <div class="milestone-point">
+            <div class="m-dot teal">→</div>
+            <div class="m-date">Q4 2027</div>
+            <div class="m-label">BTD Application<br>Submitted</div>
+          </div>
+          <div class="milestone-point">
+            <div class="m-dot teal">→</div>
+            <div class="m-date">Q4 2027</div>
+            <div class="m-label">AZA-003 IND<br>(Anxiety)</div>
+          </div>
+          <div class="milestone-point">
+            <div class="m-dot teal">→</div>
+            <div class="m-date">Q2 2028</div>
+            <div class="m-label">Phase 2a<br>Initiation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">13 / 15</div>
+</section>
+
+<!-- ===== SLIDE 14: SECTOR MOMENTUM ===== -->
+<section class="slide bg-slide" id="slide-14">
+  <div class="sector-content">
+    <div class="slide-label">SECTOR MOMENTUM</div>
+    <h2>The <span class="gradient-text">Institutional Door</span> Is Open</h2>
+    <p class="sub">Three catalysts have permanently changed the psychedelic neuropsychiatry investment landscape</p>
+    <div class="sector-cards">
+      <div class="sector-card glass">
+        <div class="sector-badge" style="background:rgba(0,201,167,0.15);color:#00C9A7;">COMPASS · CMPS</div>
+        <h3>PHASE 3 SUCCESS — FIRST EVER</h3>
+        <p>First-ever positive psilocybin Phase 3 trial. NDA filing underway. +170.8% stock performance post-announcement. Definitively validates the 5-HT2A receptor mechanism. The science is no longer theoretical.</p>
+      </div>
+      <div class="sector-card glass">
+        <div class="sector-badge" style="background:rgba(255,184,0,0.15);color:#FFB800;">ELI LILLY × ATAI</div>
+        <h3>$3.8 BILLION ACQUISITION</h3>
+        <p>Closed September 11, 2026. The largest psychedelic biotech acquisition in history. Big Pharma has arrived — not to observe, but to own. When Lilly moves, the entire sector re-rates upward.</p>
+      </div>
+      <div class="sector-card glass">
+        <div class="sector-badge" style="background:rgba(123,47,190,0.2);color:#9B4FDE;">FDA · JULY 2026</div>
+        <h3>REGULATORY FRAMEWORK ESTABLISHED</h3>
+        <p>Psychedelic clinical trial guidance finalized July 2026. Breakthrough Therapy Designations flowing. SPRAVATO (J&J esketamine) now generating $800M+ in annual revenue. The regulatory path is clear, mapped, and precedented.</p>
+      </div>
+    </div>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">14 / 15</div>
+</section>
+
+<!-- ===== SLIDE 15: CLOSE ===== -->
+<section class="slide" id="slide-15">
+  <div class="close-content">
+    <div class="slide-label">THE INVESTMENT CASE</div>
+    <h2 style="font-family:'Syne',sans-serif;font-size:clamp(36px,6vw,80px);font-weight:800;margin-bottom:44px;">
+      THE <span class="gradient-text">CONVERGENCE</span><br>IS NOW
+    </h2>
+    <ul class="close-points">
+      <li>
+        <span class="icon">🔬</span>
+        <span><strong>Novel IP</strong> — USPTO-allowed. No competitor holds the aza-psilocin compound class. Not one.</span>
+      </li>
+      <li>
+        <span class="icon">⚗️</span>
+        <span><strong>Active Synthesis</strong> — $146K API program underway at a licensed pharmaceutical facility. Not a paper asset.</span>
+      </li>
+      <li>
+        <span class="icon">📈</span>
+        <span><strong>Sector Inflection</strong> — Lilly/$3.8B. Compass Phase 3 success. FDA guidance live. The macro wind is at our back.</span>
+      </li>
+      <li>
+        <span class="icon">🏛️</span>
+        <span><strong>Clean Structure</strong> — Pristine Nasdaq cap table. No CSE legacy. Direct listing. Institutional-grade from inception.</span>
+      </li>
+      <li>
+        <span class="icon">💰</span>
+        <span><strong>Valuation Upside</strong> — $300–500M entry at peer discount. Peer-validated path to $1B+ as clinical programs advance.</span>
+      </li>
+    </ul>
+    <p class="close-statement">Azalyn Therapeutics is the first pure-play aza-substituted psilocin analog company in the world.</p>
+    <div class="contact-box">
+      <p>
+        <strong style="color:#fff;letter-spacing:0.05em;">INVESTOR CONTACT</strong><br><br>
+        <a href="mailto:investors@azalyntherapeutics.com">investors@azalyntherapeutics.com</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        MavDB Consulting, LLC
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <a href="mailto:josh@mavdbconsulting.com">josh@mavdbconsulting.com</a>
+      </p>
+    </div>
+  </div>
+  <div class="logo-mark"><span>AZ</span>ALYN</div>
+  <div class="slide-num">15 / 15</div>
+</section>
+
+<script>
+// ===== NAVIGATION =====
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const progressBar = document.getElementById('progress');
+let currentSlide = 0;
+let isScrolling = false;
+
+function updateDots(index) {
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+}
+
+function updateProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = pct + '%';
+}
+
+function goToSlide(index) {
+  slides[index].scrollIntoView({ behavior: 'smooth' });
+}
+
+// Intersection observer for active slide
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+      const idx = Array.from(slides).indexOf(entry.target);
+      if (idx !== -1) {
+        currentSlide = idx;
+        updateDots(idx);
+      }
+    }
+  });
+}, { threshold: 0.5 });
+
+slides.forEach(s => observer.observe(s));
+
+window.addEventListener('scroll', updateProgress, { passive: true });
+
+// ===== PIPELINE BAR ANIMATIONS =====
+const pipelineObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fills = entry.target.querySelectorAll('.stage-fill');
+      fills.forEach(f => f.classList.add('animate'));
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.pipeline-asset').forEach(el => pipelineObserver.observe(el));
+
+// ===== TIMELINE ANIMATION =====
+const timelineObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fill = entry.target.querySelector('#timeline-fill');
+      if (fill) fill.classList.add('animate');
+    }
+  });
+}, { threshold: 0.3 });
+
+const slide9 = document.getElementById('slide-9');
+if (slide9) timelineObserver.observe(slide9);
+
+// ===== PARTICLE SYSTEM (CSS-powered via JS) =====
+function createParticles() {
+  const container = document.getElementById('particles-container');
+  if (!container) return;
+  container.style.cssText = 'position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;';
+
+  const colors = ['rgba(123,47,190,0.6)', 'rgba(0,201,167,0.5)', 'rgba(255,255,255,0.3)'];
+  const count = 40;
+
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    const size = Math.random() * 3 + 1;
+    const x = Math.random() * 100;
+    const delay = Math.random() * 12;
+    const duration = Math.random() * 10 + 8;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    p.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      background: ${color};
+      border-radius: 50%;
+      left: ${x}%;
+      bottom: -10px;
+      animation: float-particle ${duration}s ${delay}s linear infinite;
+    `;
+    container.appendChild(p);
+  }
+}
+
+createParticles();
+
+// ===== KEYBOARD NAVIGATION =====
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+    e.preventDefault();
+    if (currentSlide < slides.length - 1) goToSlide(currentSlide + 1);
+  }
+  if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+    e.preventDefault();
+    if (currentSlide > 0) goToSlide(currentSlide - 1);
+  }
+});
+
+// ===== TOUCH SWIPE =====
+let touchStartY = 0;
+document.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const diff = touchStartY - e.changedTouches[0].clientY;
+  if (Math.abs(diff) > 50) {
+    if (diff > 0 && currentSlide < slides.length - 1) goToSlide(currentSlide + 1);
+    else if (diff < 0 && currentSlide > 0) goToSlide(currentSlide - 1);
+  }
+}, { passive: true });
+
+// Initial progress
+updateProgress();
+</script>
+</body>
+</html>
