@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Azalyn Therapeutics, Inc. | Nasdaq: AZLN</title>
+  <meta name="description" content="Azalyn Therapeutics is pioneering next-generation neuropsychiatry through novel aza-substituted psilocin analogs. USPTO-protected IP. Nasdaq: AZLN." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black:   #0A0F1A;
+      --navy:    #0D1526;
+      --navy2:   #111A2E;
+      --violet:  #7B2FBE;
+      --violet2: #9B4FDE;
+      --teal:    #00C9A7;
+      --teal2:   #00F5CC;
+      --white:   #FFFFFF;
+      --grey:    #A0AABB;
+      --glass-bg: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.10);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+
+    /* ─── SCROLLBAR ─────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--violet); border-radius: 3px; }
+
+    /* ─── NAV ───────────────────────────────────────────────────── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 60px;
+      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+    }
+    #nav.scrolled {
+      background: rgba(10,15,26,0.92);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      display: flex; flex-direction: column; gap: 1px;
+    }
+    .nav-logo-main {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.35rem; letter-spacing: 0.08em;
+      color: var(--white);
+    }
+    .nav-logo-sub {
+      font-family: 'Syne', sans-serif;
+      font-weight: 400; font-size: 0.58rem; letter-spacing: 0.32em;
+      color: var(--teal); text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 36px; align-items: center; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.75);
+      transition: color 0.2s;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      background: var(--violet); color: var(--white) !important;
+      padding: 9px 22px; border-radius: 6px;
+      font-size: 0.78rem !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--violet2) !important; transform: translateY(-1px); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(10,15,26,0.97); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 36px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Syne', sans-serif; font-size: 1.6rem;
+      font-weight: 700; color: var(--white); letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--teal); }
+    .mobile-close {
+      position: absolute; top: 28px; right: 28px;
+      font-size: 1.8rem; color: var(--grey); cursor: pointer;
+    }
+
+    /* ─── HERO ──────────────────────────────────────────────────── */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    #hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1920');
+      background-size: cover; background-position: center;
+      filter: brightness(0.18) saturate(1.2);
+    }
+    #hero-canvas {
+      position: absolute; inset: 0; z-index: 1;
+    }
+    .hero-orb {
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(123,47,190,0.28) 0%, rgba(0,201,167,0.10) 55%, transparent 72%);
+      filter: blur(60px);
+      top: 50%; left: 50%; transform: translate(-50%, -54%);
+      z-index: 1;
+      animation: orbPulse 8s ease-in-out infinite alternate;
+    }
+    @keyframes orbPulse {
+      from { transform: translate(-50%, -54%) scale(1); opacity: 0.8; }
+      to   { transform: translate(-50%, -54%) scale(1.12); opacity: 1; }
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; max-width: 860px;
+      padding: 0 24px;
+    }
+    .hero-ticker {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,201,167,0.12); border: 1px solid rgba(0,201,167,0.3);
+      border-radius: 100px; padding: 6px 16px; margin-bottom: 28px;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+      color: var(--teal); text-transform: uppercase;
+    }
+    .hero-ticker-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--teal);
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero-logo {
+      margin-bottom: 32px;
+    }
+    .hero-logo-main {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      letter-spacing: 0.14em; color: var(--white);
+      line-height: 1;
+      text-shadow: 0 0 80px rgba(123,47,190,0.5);
+    }
+    .hero-logo-sub {
+      font-family: 'Syne', sans-serif; font-weight: 300;
+      font-size: clamp(0.7rem, 1.8vw, 1rem);
+      letter-spacing: 0.5em; color: var(--teal);
+      margin-top: 6px; text-transform: uppercase;
+    }
+    .hero-headline {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: clamp(1.5rem, 3.8vw, 2.6rem);
+      line-height: 1.22; margin-bottom: 20px;
+      color: var(--white);
+    }
+    .hero-sub {
+      font-size: clamp(0.92rem, 1.5vw, 1.05rem);
+      color: rgba(255,255,255,0.62); margin-bottom: 44px;
+      font-weight: 400; letter-spacing: 0.01em;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--violet);
+      color: var(--white);
+      padding: 14px 32px; border-radius: 8px;
+      font-weight: 600; font-size: 0.9rem; letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(123,47,190,0.38);
+    }
+    .btn-primary:hover { background: var(--violet2); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(123,47,190,0.5); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 32px; border-radius: 8px;
+      font-weight: 600; font-size: 0.9rem; letter-spacing: 0.04em;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+    .scroll-indicator {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0.5; animation: fadeInUp 1s 1.5s forwards; opacity: 0;
+    }
+    @keyframes fadeInUp { from{opacity:0;transform:translateX(-50%) translateY(12px)} to{opacity:0.5;transform:translateX(-50%) translateY(0)} }
+    .scroll-indicator span { font-size: 0.65rem; letter-spacing: 0.18em; color: var(--grey); text-transform: uppercase; }
+    .scroll-arrow {
+      width: 22px; height: 22px;
+      border-right: 2px solid var(--grey); border-bottom: 2px solid var(--grey);
+      transform: rotate(45deg);
+      animation: bounce 1.8s ease-in-out infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(6px)} }
+
+    /* ─── SECTION SHARED ─────────────────────────────────────────── */
+    section { padding: 110px 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      line-height: 1.14; margin-bottom: 20px;
+    }
+    .section-lead {
+      font-size: 1.05rem; color: var(--grey); max-width: 640px;
+      line-height: 1.75;
+    }
+
+    /* ─── FADE-IN OBSERVER ──────────────────────────────────────── */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-d1 { transition-delay: 0.1s; }
+    .fade-in-d2 { transition-delay: 0.2s; }
+    .fade-in-d3 { transition-delay: 0.3s; }
+    .fade-in-d4 { transition-delay: 0.4s; }
+    .fade-in-d5 { transition-delay: 0.5s; }
+
+    /* ─── ABOUT ─────────────────────────────────────────────────── */
+    #about { background: var(--navy); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .about-text p { color: var(--grey); line-height: 1.85; margin-bottom: 20px; font-size: 0.97rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .stats-grid {
+      display: grid; grid-template-columns: 1fr; gap: 16px;
+      margin-top: 48px;
+    }
+    .stat-card {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 14px; padding: 24px 28px;
+      backdrop-filter: blur(12px);
+      display: flex; gap: 20px; align-items: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .stat-card:hover { border-color: rgba(123,47,190,0.4); transform: translateX(4px); }
+    .stat-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(123,47,190,0.3), rgba(0,201,167,0.2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .stat-label { font-size: 0.72rem; color: var(--teal); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+    .stat-value { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--white); }
+    .mission-quote {
+      margin-top: 56px; padding: 36px 0 0;
+      border-top: 1px solid var(--glass-border);
+    }
+    .mission-quote blockquote {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      font-style: italic; font-weight: 600;
+      color: rgba(255,255,255,0.88); line-height: 1.5;
+    }
+    .mission-quote cite {
+      display: block; margin-top: 14px;
+      font-size: 0.8rem; color: var(--teal); font-style: normal;
+      font-weight: 500; letter-spacing: 0.08em;
+    }
+
+    /* ─── SCIENCE ───────────────────────────────────────────────── */
+    #science {
+      position: relative; background: var(--navy2); overflow: hidden;
+    }
+    #science::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1920');
+      background-size: cover; background-position: center;
+      opacity: 0.06;
+    }
+    .science-header { text-align: center; margin-bottom: 68px; }
+    .science-header .section-lead { margin: 0 auto; }
+    .science-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .science-card {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 18px; padding: 40px 32px;
+      backdrop-filter: blur(12px); position: relative; overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .science-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--violet), var(--teal));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .science-card:hover::before { transform: scaleX(1); }
+    .science-card:hover {
+      border-color: rgba(123,47,190,0.35);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(123,47,190,0.15);
+    }
+    .card-icon { font-size: 2.4rem; margin-bottom: 20px; display: block; }
+    .card-title {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 1.15rem; margin-bottom: 14px;
+      color: var(--white);
+    }
+    .card-text { font-size: 0.92rem; color: var(--grey); line-height: 1.78; }
+
+    /* ─── PIPELINE ──────────────────────────────────────────────── */
+    #pipeline { background: var(--black); }
+    .pipeline-header { margin-bottom: 56px; }
+    .pipeline-table-wrap {
+      border-radius: 18px; overflow: hidden;
+      border: 1px solid var(--glass-border);
+    }
+    .pipeline-table { width: 100%; border-collapse: collapse; }
+    .pipeline-table thead {
+      background: rgba(123,47,190,0.18);
+    }
+    .pipeline-table thead th {
+      padding: 18px 24px; text-align: left;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--teal);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .pipeline-table tbody tr {
+      transition: background 0.2s;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .pipeline-table tbody tr:last-child { border-bottom: none; }
+    .pipeline-table tbody tr:hover { background: rgba(123,47,190,0.07); }
+    .pipeline-table tbody td {
+      padding: 22px 24px; font-size: 0.9rem;
+      vertical-align: middle;
+    }
+    .prog-name {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      color: var(--white); font-size: 1rem;
+    }
+    .prog-indication { color: var(--grey); }
+    .stage-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(123,47,190,0.15); border: 1px solid rgba(123,47,190,0.3);
+      border-radius: 100px; padding: 5px 14px;
+      font-size: 0.75rem; font-weight: 600; color: var(--violet2);
+    }
+    .stage-badge.discovery {
+      background: rgba(0,201,167,0.1); border-color: rgba(0,201,167,0.25);
+      color: var(--teal);
+    }
+    .milestone-text { color: rgba(255,255,255,0.7); font-size: 0.88rem; }
+    .progress-wrap { margin-top: 8px; }
+    .progress-bar-bg {
+      height: 5px; background: rgba(255,255,255,0.08);
+      border-radius: 10px; overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%; border-radius: 10px;
+      background: linear-gradient(90deg, var(--violet), var(--teal));
+      width: 0; transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── IP SECTION ─────────────────────────────────────────────── */
+    #ip {
+      position: relative; overflow: hidden;
+    }
+    #ip-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=1920');
+      background-size: cover; background-position: center;
+      filter: brightness(0.12) saturate(0.8);
+    }
+    #ip::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(123,47,190,0.55), rgba(0,201,167,0.28));
+    }
+    .ip-content { position: relative; z-index: 1; }
+    .ip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .ip-meta { margin: 28px 0; }
+    .ip-meta-row {
+      display: flex; justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      font-size: 0.9rem;
+    }
+    .ip-meta-row:first-child { border-top: 1px solid rgba(255,255,255,0.15); }
+    .ip-meta-row .label { color: rgba(255,255,255,0.6); font-weight: 400; }
+    .ip-meta-row .value { font-weight: 600; color: var(--white); text-align: right; max-width: 60%; }
+    .ip-callout {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px; padding: 32px;
+      text-align: center;
+    }
+    .ip-callout .callout-text {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+      line-height: 1.3; color: var(--white);
+    }
+    .ip-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,201,167,0.2); border: 1px solid rgba(0,201,167,0.4);
+      border-radius: 100px; padding: 8px 20px; margin-bottom: 20px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+      color: var(--teal); text-transform: uppercase;
+    }
+    .ip-pct {
+      margin-top: 20px; font-size: 0.82rem;
+      color: rgba(255,255,255,0.65); font-style: italic;
+    }
+    .ip-shield {
+      font-size: 3rem; margin-bottom: 16px;
+    }
+
+    /* ─── NEWS ──────────────────────────────────────────────────── */
+    #news { background: var(--navy); }
+    .news-header { text-align: center; margin-bottom: 60px; }
+    .news-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .news-card {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 18px; padding: 32px 28px;
+      backdrop-filter: blur(12px);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .news-card:hover {
+      border-color: rgba(0,201,167,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,201,167,0.1);
+    }
+    .news-date {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+      color: var(--teal); text-transform: uppercase;
+    }
+    .news-title {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 1rem; color: var(--white); line-height: 1.4;
+    }
+    .news-body { font-size: 0.88rem; color: var(--grey); line-height: 1.72; flex: 1; }
+    .news-tag {
+      display: inline-block; background: rgba(123,47,190,0.2);
+      border: 1px solid rgba(123,47,190,0.3);
+      border-radius: 100px; padding: 4px 12px;
+      font-size: 0.7rem; font-weight: 600; color: var(--violet2);
+      align-self: flex-start;
+    }
+
+    /* ─── IR SECTION ─────────────────────────────────────────────── */
+    #investors {
+      background: linear-gradient(135deg, rgba(123,47,190,0.9) 0%, rgba(0,201,167,0.75) 100%),
+                  var(--navy2);
+      position: relative; overflow: hidden;
+    }
+    #investors::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(255,255,255,0.04) 0%, transparent 70%);
+    }
+    .ir-content { position: relative; z-index: 1; }
+    .ir-header { margin-bottom: 56px; }
+    .ir-header .section-title { color: var(--white); }
+    .ir-header .section-tag { color: rgba(255,255,255,0.7); }
+    .ir-header .section-lead { color: rgba(255,255,255,0.75); }
+    .ir-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .ticker-card {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(20px); border-radius: 20px; padding: 36px;
+      text-align: center;
+    }
+    .ticker-exchange { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-bottom: 8px; }
+    .ticker-symbol {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 3.2rem; color: var(--white); letter-spacing: 0.08em;
+    }
+    .ticker-name { font-size: 0.82rem; color: rgba(255,255,255,0.65); margin-top: 6px; }
+    .ticker-divider { margin: 24px 0; border: none; border-top: 1px solid rgba(255,255,255,0.15); }
+    .ticker-contact { font-size: 0.88rem; color: rgba(255,255,255,0.8); }
+    .ticker-contact a { color: var(--white); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+    .ir-cards { display: flex; flex-direction: column; gap: 16px; }
+    .ir-card {
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 14px; padding: 28px 32px;
+      display: flex; align-items: center; gap: 20px;
+      transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .ir-card:hover { background: rgba(255,255,255,0.17); transform: translateX(4px); }
+    .ir-card-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .ir-card-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--white); }
+    .ir-card-sub { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 3px; }
+    .ir-card-arrow { margin-left: auto; font-size: 1.2rem; color: rgba(255,255,255,0.5); transition: color 0.2s, transform 0.2s; }
+    .ir-card:hover .ir-card-arrow { color: var(--white); transform: translateX(4px); }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      background: #060A14; border-top: 1px solid var(--glass-border);
+      padding: 60px 0 36px;
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .nav-logo-main { font-size: 1.4rem; }
+    .footer-tagline { color: var(--grey); font-size: 0.85rem; margin-top: 10px; line-height: 1.6; }
+    .footer-col h4 {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul li a {
+      font-size: 0.88rem; color: var(--grey);
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--glass-border);
+      padding-top: 28px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .footer-legal {
+      font-size: 0.75rem; color: rgba(255,255,255,0.3);
+      line-height: 1.6; max-width: 720px;
+    }
+    .footer-copy {
+      font-size: 0.78rem; color: rgba(255,255,255,0.3);
+    }
+
+    /* ─── DIVIDER ───────────────────────────────────────────────── */
+    .gradient-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--violet), var(--teal), transparent);
+      opacity: 0.3;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      #nav { padding: 20px 32px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .science-cards { grid-template-columns: 1fr 1fr; }
+      .ip-grid { grid-template-columns: 1fr; gap: 48px; }
+      .ir-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      #nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 80px 0; }
+      .container { padding: 0 24px; }
+      .science-cards { grid-template-columns: 1fr; }
+      .news-cards { grid-template-columns: 1fr; }
+      .pipeline-table thead th:nth-child(3),
+      .pipeline-table tbody td:nth-child(3) { display: none; }
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+      .ir-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+      .pipeline-table thead th:nth-child(4),
+      .pipeline-table tbody td:nth-child(4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-logo">
+    <span class="nav-logo-main">AZALYN</span>
+    <span class="nav-logo-sub">Therapeutics</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#science">Science</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#ip">IP</a>
+    <a href="#news">News</a>
+    <a href="#investors" class="nav-cta">Investors</a>
+  </div>
+  <div class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-close" id="mobileClose">✕</span>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#science" class="mobile-link">Science</a>
+  <a href="#pipeline" class="mobile-link">Pipeline</a>
+  <a href="#ip" class="mobile-link">IP</a>
+  <a href="#news" class="mobile-link">News</a>
+  <a href="#investors" class="mobile-link">Investors</a>
+</div>
+
+<!-- ═══════════════════════════ HERO ══════════════════════════════ -->
+<section id="hero">
+  <div id="hero-bg"></div>
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-orb"></div>
+  <div class="hero-content">
+    <div class="hero-ticker fade-in">
+      <span class="hero-ticker-dot"></span>
+      Nasdaq: AZLN &nbsp;·&nbsp; Live
+    </div>
+    <div class="hero-logo fade-in fade-in-d1">
+      <div class="hero-logo-main">AZALYN</div>
+      <div class="hero-logo-sub">Therapeutics, Inc.</div>
+    </div>
+    <h1 class="hero-headline fade-in fade-in-d2">
+      Precision Neuropsychiatry for the<br>Treatment-Resistant Generation
+    </h1>
+    <p class="hero-sub fade-in fade-in-d3">
+      Novel aza-substituted psilocin analogs.&nbsp; USPTO-protected IP.&nbsp; Nasdaq: AZLN.
+    </p>
+    <div class="hero-buttons fade-in fade-in-d4">
+      <a href="#pipeline" class="btn-primary">View Pipeline</a>
+      <a href="#investors" class="btn-ghost">Investor Relations</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════ ABOUT ════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-tag fade-in">About</span>
+        <h2 class="section-title fade-in fade-in-d1">A New Chapter in<br>Neuropsychiatry</h2>
+        <p class="fade-in fade-in-d2">
+          Azalyn Therapeutics, Inc. is a clinical-stage neuropsychiatry biopharmaceutical company pioneering a novel class of psychedelic-derived compounds designed to address the unmet medical needs of the most treatment-resistant patients.
+        </p>
+        <p class="fade-in fade-in-d3">
+          Our proprietary AZA Platform is built on aza-substitution chemistry — a structural innovation that creates first-in-class psilocin analogs with tunable pharmacokinetics and differentiated receptor binding profiles. These compounds are not found in nature and are fully protected by USPTO-issued intellectual property.
+        </p>
+        <p class="fade-in fade-in-d4">
+          Founded by a team of drug development veterans and neuropsychiatry specialists, Azalyn is advancing multiple development programs targeting treatment-resistant depression, PTSD, anxiety disorders, and substance use disorders.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-card fade-in fade-in-d1">
+            <div class="stat-icon">⚖️</div>
+            <div>
+              <div class="stat-label">Intellectual Property</div>
+              <div class="stat-value">USPTO Notice of Allowance · Aug 2026</div>
+            </div>
+          </div>
+          <div class="stat-card fade-in fade-in-d2">
+            <div class="stat-icon">🔬</div>
+            <div>
+              <div class="stat-label">Platform</div>
+              <div class="stat-value">Novel Compound Class · AZA Platform</div>
+            </div>
+          </div>
+          <div class="stat-card fade-in fade-in-d3">
+            <div class="stat-icon">📈</div>
+            <div>
+              <div class="stat-label">Exchange Listing</div>
+              <div class="stat-value">Nasdaq Direct Listing · AZLN</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="mission-quote fade-in fade-in-d2">
+          <blockquote>
+            "We believe the next generation of neuropsychiatry medicine will not come from incremental improvements to existing drugs — it will come from chemistry that nature never invented. That is the Azalyn mission."
+          </blockquote>
+          <cite>— Azalyn Therapeutics, Scientific Founding Statement</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════ SCIENCE ══════════════════════════ -->
+<section id="science">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="science-header">
+      <span class="section-tag fade-in">The Platform</span>
+      <h2 class="section-title fade-in fade-in-d1">The AZA Platform</h2>
+      <p class="section-lead fade-in fade-in-d2">
+        A radical chemical innovation in psychedelic medicine — building the first IP-protected class of aza-substituted psilocin analogs for precision neuropsychiatry.
+      </p>
+    </div>
+    <div class="science-cards">
+      <div class="science-card fade-in fade-in-d1">
+        <span class="card-icon">🔬</span>
+        <div class="card-title">Novel Chemistry</div>
+        <p class="card-text">
+          Aza-substitution replaces a carbon atom in the indole ring system with nitrogen, creating structurally distinct psilocin analogs not found in nature. Patent-protected. First in class. No prior art.
+        </p>
+      </div>
+      <div class="science-card fade-in fade-in-d2">
+        <span class="card-icon">🎯</span>
+        <div class="card-title">Precision Binding</div>
+        <p class="card-text">
+          Modified 5-HT2A receptor engagement with tunable pharmacokinetics. Dimethylamine and diisopropylamine substituents enable drug design flexibility, creating a robust pipeline of differentiated candidates from a single chemical scaffold.
+        </p>
+      </div>
+      <div class="science-card fade-in fade-in-d3">
+        <span class="card-icon">💊</span>
+        <div class="card-title">Clinical Potential</div>
+        <p class="card-text">
+          Designed for treatment-resistant depression, PTSD, and anxiety disorders — patient populations with the most significant unmet need and greatest therapeutic opportunity. Pre-IND stage. API synthesis underway with Applied Pharmaceutical Innovation.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════ PIPELINE ═════════════════════════ -->
+<section id="pipeline">
+  <div class="container">
+    <div class="pipeline-header">
+      <span class="section-tag fade-in">Development Portfolio</span>
+      <h2 class="section-title fade-in fade-in-d1">Pipeline</h2>
+      <p class="section-lead fade-in fade-in-d2">
+        Four active programs across the most compelling neuropsychiatry indications, all derived from the AZA Platform's core chemical scaffold.
+      </p>
+    </div>
+    <div class="pipeline-table-wrap fade-in fade-in-d2">
+      <table class="pipeline-table">
+        <thead>
+          <tr>
+            <th>Program</th>
+            <th>Indication</th>
+            <th>Stage</th>
+            <th>Next Milestone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="prog-name">AZA-001</div>
+              <div class="progress-wrap">
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" data-width="52"></div>
+                </div>
+              </div>
+            </td>
+            <td><span class="prog-indication">Treatment-Resistant Depression</span></td>
+            <td><span class="stage-badge">Pre-Clinical / API Synthesis</span></td>
+            <td><span class="milestone-text">IND Filing — Q2 2027</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="prog-name">AZA-002</div>
+              <div class="progress-wrap">
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" data-width="38"></div>
+                </div>
+              </div>
+            </td>
+            <td><span class="prog-indication">PTSD</span></td>
+            <td><span class="stage-badge">Pre-Clinical</span></td>
+            <td><span class="milestone-text">Binding Studies — Q3 2027</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="prog-name">AZA-003</div>
+              <div class="progress-wrap">
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" data-width="22"></div>
+                </div>
+              </div>
+            </td>
+            <td><span class="prog-indication">Anxiety Disorders</span></td>
+            <td><span class="stage-badge discovery">Discovery</span></td>
+            <td><span class="milestone-text">Lead Optimization — Q4 2027</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="prog-name">AZA-Platform</div>
+              <div class="progress-wrap">
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" data-width="12"></div>
+                </div>
+              </div>
+            </td>
+            <td><span class="prog-indication">Addiction / SUD</span></td>
+            <td><span class="stage-badge discovery">Discovery</span></td>
+            <td><span class="milestone-text">Target Validation — 2028</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════ IP ════════════════════════════════ -->
+<section id="ip">
+  <div id="ip-bg"></div>
+  <div class="container ip-content">
+    <div class="ip-grid">
+      <div>
+        <span class="section-tag fade-in">Intellectual Property</span>
+        <h2 class="section-title fade-in fade-in-d1">Protected by Science</h2>
+        <p class="section-lead fade-in fade-in-d2">
+          USPTO Notice of Allowance — U.S. Patent Application No. 18/443,025
+        </p>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;font-style:italic;margin-top:12px;" class="fade-in fade-in-d2">
+          "Aza-Substituted Psilocin Analogs and Methods of Synthesizing the Same"
+        </p>
+
+        <div class="ip-meta fade-in fade-in-d3">
+          <div class="ip-meta-row">
+            <span class="label">Notice Issued</span>
+            <span class="value">August 18, 2026</span>
+          </div>
+          <div class="ip-meta-row">
+            <span class="label">Claims Allowed</span>
+            <span class="value">All 6 claims allowable</span>
+          </div>
+          <div class="ip-meta-row">
+            <span class="label">Coverage</span>
+            <span class="value">Aza-substituted psilocin analogs + pharmaceutical compositions</span>
+          </div>
+          <div class="ip-meta-row">
+            <span class="label">Estimated Expiry</span>
+            <span class="value">~2041</span>
+          </div>
+          <div class="ip-meta-row">
+            <span class="label">International</span>
+            <span class="value">PCT filing in progress</span>
+          </div>
+        </div>
+
+        <div class="ip-badge fade-in fade-in-d4">
+          <span>🌐</span> PCT International Filing In Progress
+        </div>
+        <p class="ip-pct fade-in fade-in-d4">Targeting international patent protection across major markets</p>
+      </div>
+
+      <div class="fade-in fade-in-d3">
+        <div class="ip-callout">
+          <div class="ip-shield">🛡️</div>
+          <p class="callout-text">
+            "The only company with USPTO-protected aza-substituted psilocin analog intellectual property"
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════ NEWS ═════════════════════════════ -->
+<section id="news">
+  <div class="container">
+    <div class="news-header">
+      <span class="section-tag fade-in">Latest</span>
+      <h2 class="section-title fade-in fade-in-d1">News & Milestones</h2>
+    </div>
+    <div class="news-cards">
+      <div class="news-card fade-in fade-in-d1">
+        <div class="news-date">August 18, 2026</div>
+        <div class="news-title">USPTO Notice of Allowance Issued</div>
+        <p class="news-body">
+          The United States Patent and Trademark Office issued a Notice of Allowance for Azalyn's foundational patent covering aza-substituted psilocin analogs, with all six claims found allowable.
+        </p>
+        <span class="news-tag">Intellectual Property</span>
+      </div>
+      <div class="news-card fade-in fade-in-d2">
+        <div class="news-date">September 2026</div>
+        <div class="news-title">$146,000 API Synthesis Program Initiated</div>
+        <p class="news-body">
+          Azalyn has engaged Applied Pharmaceutical Innovation to synthesize AZA-001 and AZA-002 compounds, initiating the IND-enabling research program and advancing the company's lead candidates toward clinical readiness.
+        </p>
+        <span class="news-tag">R&amp;D</span>
+      </div>
+      <div class="news-card fade-in fade-in-d3">
+        <div class="news-date">September 2026</div>
+        <div class="news-title">Nasdaq Direct Listing Process Initiated</div>
+        <p class="news-body">
+          Azalyn Therapeutics has initiated the process for a direct listing on the Nasdaq Capital Market, targeting a $300–500M valuation, establishing a path to institutional capital markets access for the company's growing pipeline.
+        </p>
+        <span class="news-tag">Corporate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════ IR ════════════════════════════════ -->
+<section id="investors">
+  <div class="container ir-content">
+    <div class="ir-header">
+      <span class="section-tag">Investor Relations</span>
+      <h2 class="section-title fade-in fade-in-d1">Built for Capital Markets</h2>
+      <p class="section-lead fade-in fade-in-d2">
+        Azalyn Therapeutics is designed from day one for institutional-grade transparency, rigorous IP protection, and Nasdaq-listed market access.
+      </p>
+    </div>
+    <div class="ir-grid">
+      <div class="ticker-card fade-in fade-in-d1">
+        <div class="ticker-exchange">Nasdaq Capital Market</div>
+        <div class="ticker-symbol">AZLN</div>
+        <div class="ticker-name">Azalyn Therapeutics, Inc.</div>
+        <hr class="ticker-divider" />
+        <div class="ticker-contact">
+          Investor Inquiries:<br>
+          <a href="mailto:investors@azalyntherapeutics.com">investors@azalyntherapeutics.com</a>
+        </div>
+      </div>
+      <div class="ir-cards fade-in fade-in-d2">
+        <div class="ir-card">
+          <div class="ir-card-icon">📄</div>
+          <div>
+            <div class="ir-card-label">SEC Filings</div>
+            <div class="ir-card-sub">Annual reports, 10-Ks, 8-Ks &amp; prospectus documents</div>
+          </div>
+          <div class="ir-card-arrow">→</div>
+        </div>
+        <div class="ir-card">
+          <div class="ir-card-icon">📰</div>
+          <div>
+            <div class="ir-card-label">Press Releases</div>
+            <div class="ir-card-sub">Corporate announcements, R&amp;D updates &amp; milestones</div>
+          </div>
+          <div class="ir-card-arrow">→</div>
+        </div>
+        <div class="ir-card">
+          <div class="ir-card-icon">📊</div>
+          <div>
+            <div class="ir-card-label">Investor Presentations</div>
+            <div class="ir-card-sub">Corporate deck, pipeline overview &amp; scientific data</div>
+          </div>
+          <div class="ir-card-arrow">→</div>
+        </div>
+        <div class="ir-card">
+          <div class="ir-card-icon">🗓️</div>
+          <div>
+            <div class="ir-card-label">Events &amp; Conferences</div>
+            <div class="ir-card-sub">Upcoming investor days, roadshows &amp; biotech conferences</div>
+          </div>
+          <div class="ir-card-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <span class="nav-logo-main">AZALYN</span>
+          <span class="nav-logo-sub">Therapeutics, Inc.</span>
+        </div>
+        <p class="footer-tagline">
+          Next-Generation Neuropsychiatry.<br>Novel Chemistry.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#science">Science</a></li>
+          <li><a href="#pipeline">Pipeline</a></li>
+          <li><a href="#ip">Intellectual Property</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Investors</h4>
+        <ul>
+          <li><a href="#investors">Investor Relations</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="mailto:investors@azalyntherapeutics.com">Contact IR</a></li>
+          <li><a href="#">SEC Filings</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">
+        <strong>Forward-Looking Statements:</strong> This website contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This website does not constitute an offer to sell or a solicitation of an offer to buy any securities. Azalyn Therapeutics' drug candidates are investigational and have not been approved by the FDA.
+      </p>
+      <p class="footer-copy">© 2026 Azalyn Therapeutics, Inc. All rights reserved. &nbsp;|&nbsp; Nasdaq: AZLN</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════ JAVASCRIPT ════════════════════════ -->
+<script>
+  /* ── Nav scroll ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── Mobile menu ── */
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu   = document.getElementById('mobileMenu');
+  const mobileClose  = document.getElementById('mobileClose');
+  hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  mobileClose.addEventListener('click',  () => mobileMenu.classList.remove('open'));
+  document.querySelectorAll('.mobile-link').forEach(l =>
+    l.addEventListener('click', () => mobileMenu.classList.remove('open'))
+  );
+
+  /* ── Intersection Observer: fade-in ── */
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const fadeIO  = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeIO.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => fadeIO.observe(el));
+
+  /* ── Intersection Observer: progress bars ── */
+  const bars   = document.querySelectorAll('.progress-bar-fill');
+  const barIO  = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const w = e.target.dataset.width;
+        setTimeout(() => { e.target.style.width = w + '%'; }, 300);
+        barIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(b => barIO.observe(b));
+
+  /* ── Neural network particle canvas ── */
+  (function() {
+    const canvas = document.getElementById('hero-canvas');
+    const ctx    = canvas.getContext('2d');
+    let W, H, particles = [];
+    const PARTICLE_COUNT = 90;
+    const MAX_DIST       = 160;
+
+    function resize() {
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resize, { passive: true });
+    resize();
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+
+    function Particle() {
+      this.x  = rand(0, W);
+      this.y  = rand(0, H);
+      this.vx = rand(-0.28, 0.28);
+      this.vy = rand(-0.28, 0.28);
+      this.r  = rand(1.2, 2.6);
+      this.alpha = rand(0.35, 0.75);
+    }
+    Particle.prototype.update = function() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > W) this.vx *= -1;
+      if (this.y < 0 || this.y > H) this.vy *= -1;
+    };
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        const p = particles[i];
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0,201,167,${p.alpha})`;
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const q  = particles[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const d  = Math.sqrt(dx*dx + dy*dy);
+          if (d < MAX_DIST) {
+            const opacity = (1 - d / MAX_DIST) * 0.28;
+            const grad = ctx.createLinearGradient(p.x, p.y, q.x, q.y);
+            grad.addColorStop(0, `rgba(123,47,190,${opacity})`);
+            grad.addColorStop(1, `rgba(0,201,167,${opacity})`);
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = grad;
+            ctx.lineWidth   = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+</script>
+</body>
+</html>
