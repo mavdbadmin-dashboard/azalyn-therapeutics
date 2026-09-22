@@ -24,7 +24,9 @@
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     overflow-y: scroll;
+    height: 100%;
   }
+  body { height: 100%; }
 
   body {
     font-family: 'Inter', sans-serif;
@@ -1551,8 +1553,9 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
-    html { scroll-snap-type: none; }
-    .slide { height: auto; min-height: 100vh; padding: 60px 20px; }
+    html { scroll-snap-type: none !important; overflow-y: auto !important; }
+    body { overflow-y: auto !important; }
+    .slide { height: auto; min-height: 100svh; padding: 60px 20px; scroll-snap-align: none; }
     .thesis-layout { grid-template-columns: 1fr; gap: 40px; }
     .thesis-cards { grid-template-columns: 1fr; }
     .platform-layout { grid-template-columns: 1fr; gap: 32px; }
@@ -1590,15 +1593,17 @@
   <div class="dot" onclick="goToSlide(3)" title="AZA Platform"></div>
   <div class="dot" onclick="goToSlide(4)" title="Pipeline"></div>
   <div class="dot" onclick="goToSlide(5)" title="Science"></div>
-  <div class="dot" onclick="goToSlide(6)" title="Market"></div>
-  <div class="dot" onclick="goToSlide(7)" title="Comparable Valuations"></div>
-  <div class="dot" onclick="goToSlide(8)" title="Regulatory"></div>
-  <div class="dot" onclick="goToSlide(9)" title="IP"></div>
-  <div class="dot" onclick="goToSlide(10)" title="Team"></div>
-  <div class="dot" onclick="goToSlide(11)" title="Capital Structure"></div>
-  <div class="dot" onclick="goToSlide(12)" title="Milestones"></div>
-  <div class="dot" onclick="goToSlide(13)" title="Sector Momentum"></div>
-  <div class="dot" onclick="goToSlide(14)" title="Close"></div>
+  <div class="dot" onclick="goToSlide(6)" title="AZA-DMT Breakthrough"></div>
+  <div class="dot" onclick="goToSlide(7)" title="Market"></div>
+  <div class="dot" onclick="goToSlide(8)" title="Comparable Valuations"></div>
+  <div class="dot" onclick="goToSlide(9)" title="Regulatory"></div>
+  <div class="dot" onclick="goToSlide(10)" title="IP"></div>
+  <div class="dot" onclick="goToSlide(11)" title="Team"></div>
+  <div class="dot" onclick="goToSlide(12)" title="Advisory Board"></div>
+  <div class="dot" onclick="goToSlide(13)" title="Capital Structure"></div>
+  <div class="dot" onclick="goToSlide(14)" title="Milestones"></div>
+  <div class="dot" onclick="goToSlide(15)" title="Sector Momentum"></div>
+  <div class="dot" onclick="goToSlide(16)" title="Close"></div>
 </div>
 
 <!-- ===== SLIDE 1: COVER ===== -->
@@ -2501,15 +2506,30 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ===== TOUCH SWIPE =====
-let touchStartY = 0;
-document.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
-document.addEventListener('touchend', e => {
-  const diff = touchStartY - e.changedTouches[0].clientY;
-  if (Math.abs(diff) > 50) {
-    if (diff > 0 && currentSlide < slides.length - 1) goToSlide(currentSlide + 1);
-    else if (diff < 0 && currentSlide > 0) goToSlide(currentSlide - 1);
-  }
-}, { passive: true });
+// Mobile: disable JS slide-snap on small screens, let native scroll handle it
+const isMobile = window.innerWidth <= 900;
+let touchStartY = 0, touchStartTime = 0, isSwiping = false;
+
+if (!isMobile) {
+  document.addEventListener('touchstart', e => {
+    touchStartY = e.touches[0].clientY;
+    touchStartTime = Date.now();
+    isSwiping = false;
+  }, { passive: true });
+  document.addEventListener('touchmove', e => {
+    if (Math.abs(e.touches[0].clientY - touchStartY) > 10) isSwiping = true;
+  }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (!isSwiping) return;
+    const diff = touchStartY - e.changedTouches[0].clientY;
+    const elapsed = Date.now() - touchStartTime;
+    if (Math.abs(diff) > 40 || (Math.abs(diff) > 20 && elapsed < 300)) {
+      if (diff > 0 && currentSlide < slides.length - 1) goToSlide(currentSlide + 1);
+      else if (diff < 0 && currentSlide > 0) goToSlide(currentSlide - 1);
+    }
+    isSwiping = false;
+  }, { passive: true });
+}
 
 // Initial progress
 updateProgress();
