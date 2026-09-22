@@ -298,6 +298,7 @@
     .science-header { text-align: center; margin-bottom: 68px; }
     .science-header .section-lead { margin: 0 auto; }
     .science-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 1100px) { .science-cards { grid-template-columns: repeat(2, 1fr); } }
     .science-card {
       background: var(--glass-bg); border: 1px solid var(--glass-border);
       border-radius: 18px; padding: 40px 32px;
@@ -634,7 +635,7 @@
     </p>
     <div class="hero-buttons fade-in fade-in-d4">
       <a href="#pipeline" class="btn-primary">View Pipeline</a>
-      <a href="deck.html" target="_blank" class="btn-ghost">Investor Presentation ↗</a>
+      <a href="#investors" class="btn-ghost">Investor Relations</a>
     </div>
   </div>
   <div class="scroll-indicator">
@@ -723,14 +724,28 @@
         <span class="card-icon">🎯</span>
         <div class="card-title">Precision Binding</div>
         <p class="card-text">
-          Modified 5-HT2A receptor engagement with tunable pharmacokinetics. Dimethylamine and diisopropylamine substituents enable drug design flexibility, creating a robust pipeline of differentiated candidates from a single chemical scaffold.
+          Modified 5-HT2A receptor engagement with tunable pharmacokinetics. The R2 diisopropylamine substituent — the specific modification USPTO allowed as novel — creates a bulkier binding profile at the 5-HT2A receptor, enabling more selective engagement with reduced off-target binding. A key safety advantage in serotonergic drug development.
         </p>
       </div>
       <div class="science-card fade-in fade-in-d3">
-        <span class="card-icon">💊</span>
-        <div class="card-title">Clinical Potential</div>
+        <span class="card-icon">🧬</span>
+        <div class="card-title">Delivery Innovation</div>
         <p class="card-text">
-          Designed for treatment-resistant depression, PTSD, and anxiety disorders — patient populations with the most significant unmet need and greatest therapeutic opportunity. Pre-IND stage. API synthesis underway with Applied Pharmaceutical Innovation.
+          Carbonate/carbamate prodrug chemistry enables transdermal, sublingual, and controlled-release formulations. The same innovation strategy that built J&amp;J's $800M/year SPRAVATO franchise.
+        </p>
+      </div>
+      <div class="science-card fade-in fade-in-d4">
+        <span class="card-icon">⚡</span>
+        <div class="card-title">AZA-DMT Platform</div>
+        <p class="card-text">
+          Azalyn holds the first patented aza-DMT compound (US 63/923,194). If confirmed orally bioavailable, this is a clinically viable, patent-protected DMT — something the entire DMT therapeutic field has been searching for.
+        </p>
+      </div>
+      <div class="science-card fade-in fade-in-d5">
+        <span class="card-icon">🌐</span>
+        <div class="card-title">Global Protection</div>
+        <p class="card-text">
+          17 patent assets. 5 compound families. 6 granted patents. US, Canada, EU, Australia, International PCT. A global IP fortress built over 4+ years of chemistry.
         </p>
       </div>
     </div>
@@ -827,41 +842,45 @@
     <div class="ip-grid">
       <div>
         <span class="section-tag fade-in">Intellectual Property</span>
-        <h2 class="section-title fade-in fade-in-d1">Protected by Science</h2>
-        <p class="section-lead fade-in fade-in-d2">
-          USPTO Notice of Allowance — U.S. Patent Application No. 18/443,025
-        </p>
-        <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;font-style:italic;margin-top:12px;" class="fade-in fade-in-d2">
-          "Aza-Substituted Psilocin Analogs and Methods of Synthesizing the Same"
-        </p>
+        <h2 class="section-title fade-in fade-in-d1">A Chemistry-First Defense</h2>
+
+        <div class="fade-in fade-in-d2" style="margin-bottom:28px;">
+          <p style="color:rgba(255,255,255,0.8);font-size:0.95rem;line-height:1.85;margin-bottom:18px;">Most psychedelic therapy companies are racing clinical trials with molecules that come from mushrooms. We went in a different direction.</p>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.85;margin-bottom:18px;">Azalyn's scientific team started from a fundamental question: if psilocybin and DMT have extraordinary therapeutic potential, why do they work so poorly as medicines? The answer is chemistry. Psilocin &mdash; the active molecule behind mushroom therapy &mdash; oxidizes and degrades on contact with air, making pharmaceutical manufacturing a nightmare. DMT lasts minutes and can't be taken as a pill. These aren't regulatory problems. They're molecular problems.</p>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.85;margin-bottom:18px;"><strong style="color:var(--teal);">We built better molecules.</strong></p>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.85;margin-bottom:18px;"><strong style="color:rgba(255,255,255,0.9);">The Aza-Substitution Platform:</strong> By replacing a single carbon atom with nitrogen in the indole ring of psilocin, we created a new class of compounds &mdash; aza-psilocin analogs &mdash; that are chemically stable, manufactureable, and potentially deliverable via transdermal patch or sublingual strip instead of just oral capsules. This isn't a formulation trick. It's a fundamentally different molecule with full patent protection through 2041.</p>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.85;margin-bottom:18px;"><strong style="color:rgba(255,255,255,0.9);">The Prodrug Platform:</strong> Our carbonate and carbamate prodrug families (one US patent granted, one Canadian patent granted) create a second axis of innovation &mdash; controlling how fast and where in the body psilocin is released. A gradual-release prodrug could transform a 6-hour monitored clinical experience into a 2-hour outpatient session.</p>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.85;margin-bottom:18px;"><strong style="color:rgba(255,255,255,0.9);">The Aza-DMT Opportunity:</strong> DMT-assisted therapy is now clinically validated. GH Research's February 2025 Phase 2b results showed a landmark &minus;15.5 point MADRS reduction in treatment-resistant depression patients. Cybin's deuterated DMT program is at Phase 2. We believe aza-modification of DMT goes further &mdash; potentially enabling oral bioavailability that neither natural DMT nor deuterated DMT can achieve. Our aza-DMT provisional patent covers territory no competitor has entered.</p>
+        </div>
 
         <div class="ip-meta fade-in fade-in-d3">
           <div class="ip-meta-row">
-            <span class="label">Notice Issued</span>
-            <span class="value">August 18, 2026</span>
+            <span class="label">Granted US Patents</span>
+            <span class="value">4 (aza-psilocin families + prodrugs)</span>
           </div>
           <div class="ip-meta-row">
-            <span class="label">Claims Allowed</span>
-            <span class="value">All 6 claims allowable</span>
+            <span class="label">Granted Canadian Patents</span>
+            <span class="value">2</span>
           </div>
           <div class="ip-meta-row">
-            <span class="label">Coverage</span>
-            <span class="value">Aza-substituted psilocin analogs + pharmaceutical compositions</span>
+            <span class="label">Provisional Patents</span>
+            <span class="value">2 (AZA-DMT + aza-azetidine)</span>
           </div>
           <div class="ip-meta-row">
-            <span class="label">Estimated Expiry</span>
-            <span class="value">~2041</span>
+            <span class="label">International Coverage</span>
+            <span class="value">Australia, PCT, EU pending</span>
           </div>
           <div class="ip-meta-row">
-            <span class="label">International</span>
-            <span class="value">PCT filing in progress</span>
+            <span class="label">Priority Date Advantage</span>
+            <span class="value">December 2020 &mdash; predates most competitor filings</span>
           </div>
         </div>
 
-        <div class="ip-badge fade-in fade-in-d4">
-          <span>🌐</span> PCT International Filing In Progress
+        <!-- AZA-DMT Highlight Box -->
+        <div class="fade-in fade-in-d4" style="margin-top:24px;background:#0D1526;border:2px solid var(--teal);border-radius:14px;padding:28px 32px;">
+          <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.16em;color:var(--teal);text-transform:uppercase;margin-bottom:12px;">⭐ BREAKTHROUGH ASSET: AZA-DMT DERIVATIVES</p>
+          <p style="font-size:0.9rem;color:rgba(255,255,255,0.85);line-height:1.75;">U.S. Patent Application 63/923,194 covers aza-substituted DMT analogs &mdash; the first of their kind. DMT is a validated therapeutic target (GH Research Phase 2b success; Cybin CYB004 ~$998M program). Azalyn's aza-DMT may achieve oral bioavailability that natural and deuterated DMT cannot. This is early-stage &mdash; but if confirmed preclinically, it is potentially the most valuable asset in the portfolio.</p>
         </div>
-        <p class="ip-pct fade-in fade-in-d4">Targeting international patent protection across major markets</p>
       </div>
 
       <div class="fade-in fade-in-d3">
@@ -954,14 +973,14 @@
           </div>
           <div class="ir-card-arrow">→</div>
         </div>
-        <a class="ir-card" href="deck.html" target="_blank" style="text-decoration:none;cursor:pointer;">
+        <div class="ir-card">
           <div class="ir-card-icon">📊</div>
           <div>
-            <div class="ir-card-label">Investor Presentation</div>
-            <div class="ir-card-sub">Corporate deck, pipeline overview &amp; scientific data — View now →</div>
+            <div class="ir-card-label">Investor Presentations</div>
+            <div class="ir-card-sub">Corporate deck, pipeline overview &amp; scientific data</div>
           </div>
-          <div class="ir-card-arrow" style="color:var(--teal);">↗</div>
-        </a>
+          <div class="ir-card-arrow">→</div>
+        </div>
         <div class="ir-card">
           <div class="ir-card-icon">🗓️</div>
           <div>
