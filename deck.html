@@ -889,62 +889,145 @@
   }
 
   /* ===== SLIDE 10 — IP ===== */
-  #slide-10 { background: #0A0F1A; }
+  #slide-10 { background: #0A0F1A; align-items: flex-start; }
 
   .ip-content {
     width: 100%;
-    max-width: 1100px;
-    padding: 0 60px;
+    max-width: 1200px;
+    padding: 40px 60px 60px;
+    overflow-y: auto;
+    max-height: 100vh;
   }
 
   .ip-content h2 {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(32px, 4.5vw, 56px);
+    font-size: clamp(28px, 3.5vw, 48px);
     font-weight: 800;
-    margin-bottom: 36px;
+    margin-bottom: 24px;
+  }
+
+  /* Stat bar */
+  .ip-stat-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .ip-stat {
+    background: rgba(123,47,190,0.12);
+    border: 1px solid rgba(123,47,190,0.3);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  .ip-stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    display: block;
+  }
+
+  .ip-stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    margin-top: 2px;
+    display: block;
+  }
+
+  /* Family sections */
+  .ip-family {
+    margin-bottom: 18px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .ip-family-header {
+    background: rgba(255,255,255,0.04);
+    padding: 11px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #00C9A7;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
   .ip-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 28px;
   }
 
   .ip-table th {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.3);
     text-transform: uppercase;
-    padding: 12px 20px;
+    padding: 9px 14px;
     text-align: left;
     background: rgba(255,255,255,0.02);
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
   .ip-table td {
-    padding: 18px 20px;
-    font-size: 13px;
+    padding: 10px 14px;
+    font-size: 12px;
     color: rgba(255,255,255,0.7);
     border-bottom: 1px solid rgba(255,255,255,0.04);
-    vertical-align: top;
+    vertical-align: middle;
   }
 
-  .ip-table tr:first-child td {
-    background: rgba(123,47,190,0.06);
+  .ip-table tr:last-child td { border-bottom: none; }
+
+  .ip-table td.status-cell { font-size: 12px; white-space: nowrap; }
+
+  .status-granted { color: #4ADE80; font-weight: 600; }
+  .status-pending { color: #00C9A7; font-weight: 600; }
+  .status-provisional { color: #FFB800; font-weight: 600; }
+
+  /* AZA-DMT callout */
+  .ip-dmt-callout {
+    margin-top: 20px;
+    padding: 20px 24px;
+    border-left: 3px solid #FFB800;
+    border-radius: 8px;
+    background: rgba(255,184,0,0.06);
+    border: 1px solid rgba(255,184,0,0.2);
+    border-left: 3px solid #FFB800;
   }
 
-  .ip-table td.status-cell { font-size: 14px; }
+  .ip-dmt-callout h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #FFB800;
+    margin-bottom: 8px;
+  }
+
+  .ip-dmt-callout p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
 
   .ip-note {
-    padding: 20px 24px;
+    padding: 16px 20px;
     border-left: 3px solid #7B2FBE;
     border-radius: 8px;
     background: rgba(123,47,190,0.05);
-    font-size: 13px;
+    font-size: 12px;
     color: var(--gray);
     font-style: italic;
     line-height: 1.65;
+    margin-top: 16px;
   }
 
   /* ===== SLIDE 11 — TEAM ===== */
@@ -1553,7 +1636,7 @@
     <div class="thesis-cards">
       <div class="thesis-card glass">
         <h3>NOVEL IP, NOT GENERIC PSILOCYBIN</h3>
-        <p>USPTO-allowed patent (Appl. 18/443,025) covering aza-substituted psilocin analogs. Differentiated nitrogen ring chemistry that Compass, Cybin, and MindMed do not hold.</p>
+        <p>17-asset global patent portfolio across 5 compound families. 6 granted patents. Aza-substituted psilocin analogs, prodrugs, and AZA-DMT derivatives — differentiated chemistry that Compass, Cybin, and MindMed do not hold.</p>
       </div>
       <div class="thesis-card glass">
         <h3>SECTOR AT HISTORIC INFLECTION</h3>
@@ -1894,48 +1977,102 @@
   <div class="ip-content">
     <div class="slide-label">INTELLECTUAL PROPERTY</div>
     <h2><span class="gradient-text">THE PATENT</span><br>PORTFOLIO</h2>
-    <table class="ip-table glass">
-      <thead>
-        <tr>
-          <th>Asset</th>
-          <th>Jurisdiction</th>
-          <th>Status</th>
-          <th>Coverage</th>
-          <th>Expiry</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong style="color:#fff;">U.S. Appl. 18/443,025</strong></td>
-          <td>United States</td>
-          <td class="status-cell">✅ <strong style="color:#00C9A7;">Notice of Allowance</strong><br><span style="font-size:11px;color:var(--gray);">Aug 18, 2026</span></td>
-          <td>Aza-substituted psilocin analogs + pharmaceutical compositions</td>
-          <td style="color:#00C9A7;font-weight:600;">~2041</td>
-        </tr>
-        <tr>
-          <td><strong style="color:#fff;">PCT Filing</strong></td>
-          <td>International</td>
-          <td class="status-cell">🔄 <strong style="color:#FFB800;">In Progress</strong></td>
-          <td>Same compound class, global coverage</td>
-          <td>~2041</td>
-        </tr>
-        <tr>
-          <td><strong style="color:#fff;">Synthesis Methods</strong></td>
-          <td>United States</td>
-          <td class="status-cell">📋 <strong style="color:var(--gray);">In Preparation</strong></td>
-          <td>Methods of synthesizing AZA compounds</td>
-          <td>~2041</td>
-        </tr>
-        <tr>
-          <td><strong style="color:#fff;">Formulation Patents</strong></td>
-          <td>United States</td>
-          <td class="status-cell">📋 <strong style="color:var(--gray);">In Preparation</strong></td>
-          <td>Drug delivery & novel formulations</td>
-          <td>TBD</td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="ip-note">The USPTO-allowed claims cover not only the compounds but their pharmaceutical compositions — broad protection that no competitor can design around without infringing. This is not a method-of-use patent. It is composition of matter.</p>
+
+    <!-- Stat bar -->
+    <div class="ip-stat-bar">
+      <div class="ip-stat">
+        <span class="ip-stat-number">17</span>
+        <span class="ip-stat-label">Patent Assets</span>
+      </div>
+      <div class="ip-stat">
+        <span class="ip-stat-number">5</span>
+        <span class="ip-stat-label">Compound Families</span>
+      </div>
+      <div class="ip-stat">
+        <span class="ip-stat-number">6</span>
+        <span class="ip-stat-label">Granted Patents</span>
+      </div>
+      <div class="ip-stat">
+        <span class="ip-stat-number">4+</span>
+        <span class="ip-stat-label">Jurisdictions + International</span>
+      </div>
+    </div>
+
+    <!-- Family 1 -->
+    <div class="ip-family">
+      <div class="ip-family-header">Family 1: Aza-Substituted Psilocin Analogs</div>
+      <table class="ip-table">
+        <thead><tr><th>Application / Reg. #</th><th>Jurisdiction</th><th>Status</th><th>Est. Expiry</th></tr></thead>
+        <tbody>
+          <tr><td><strong style="color:#fff;">US 11,952,342</strong></td><td>United States</td><td class="status-cell"><span class="status-granted">✅ GRANTED</span></td><td style="color:#4ADE80;font-weight:600;">~2041</td></tr>
+          <tr><td><strong style="color:#fff;">US 11,939,292</strong></td><td>United States</td><td class="status-cell"><span class="status-granted">✅ GRANTED</span></td><td style="color:#4ADE80;font-weight:600;">~2041</td></tr>
+          <tr><td><strong style="color:#fff;">US 12,686,660</strong></td><td>United States</td><td class="status-cell"><span class="status-granted">✅ GRANTED</span></td><td style="color:#4ADE80;font-weight:600;">~2041</td></tr>
+          <tr><td><strong style="color:#fff;">CA 3,210,114</strong></td><td>Canada</td><td class="status-cell"><span class="status-granted">✅ GRANTED</span></td><td style="color:#4ADE80;font-weight:600;">~2041</td></tr>
+          <tr><td><strong style="color:#fff;">EU 22901973.2</strong></td><td>EU Region</td><td class="status-cell"><span class="status-pending">🔄 PENDING</span></td><td>~2041</td></tr>
+          <tr><td><strong style="color:#fff;">AU 2022403534</strong></td><td>Australia</td><td class="status-cell"><span class="status-pending">🔄 PENDING</span></td><td>~2041</td></tr>
+          <tr><td><strong style="color:#fff;">PCT/US2021/061826</strong></td><td>International</td><td class="status-cell"><span class="status-pending">🔄 PCT FILED</span></td><td>~2041</td></tr>
+          <tr><td><strong style="color:#fff;">US 19/735,851</strong></td><td>United States</td><td class="status-cell"><span class="status-pending">🔄 CONTINUATION</span></td><td>~2041</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Family 2 -->
+    <div class="ip-family">
+      <div class="ip-family-header">Family 2: Novel Psilocin Prodrug Compounds</div>
+      <table class="ip-table">
+        <thead><tr><th>Application / Reg. #</th><th>Jurisdiction</th><th>Status</th><th>Est. Expiry</th></tr></thead>
+        <tbody>
+          <tr><td><strong style="color:#fff;">CA 3,197,923</strong></td><td>Canada</td><td class="status-cell"><span class="status-granted">✅ GRANTED</span></td><td style="color:#4ADE80;font-weight:600;">~2042</td></tr>
+          <tr><td><strong style="color:#fff;">US 18/141,844</strong></td><td>United States</td><td class="status-cell"><span class="status-pending">🔄 PENDING</span></td><td>~2042</td></tr>
+          <tr><td><strong style="color:#fff;">AU 2021390543</strong></td><td>Australia</td><td class="status-cell"><span class="status-pending">🔄 PENDING</span></td><td>~2042</td></tr>
+          <tr><td><strong style="color:#fff;">US 19/789,963</strong></td><td>United States</td><td class="status-cell"><span class="status-pending">🔄 CONTINUATION</span></td><td>~2042</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Family 3 -->
+    <div class="ip-family">
+      <div class="ip-family-header">Family 3: Psilocin Prodrug Compounds</div>
+      <table class="ip-table">
+        <thead><tr><th>Application / Reg. #</th><th>Jurisdiction</th><th>Status</th><th>Est. Expiry</th></tr></thead>
+        <tbody>
+          <tr><td><strong style="color:#fff;">US 12,064,415</strong></td><td>United States</td><td class="status-cell"><span class="status-granted">✅ GRANTED</span></td><td style="color:#4ADE80;font-weight:600;">~2043</td></tr>
+          <tr><td><strong style="color:#fff;">CA 3,224,835</strong></td><td>Canada</td><td class="status-cell"><span class="status-granted">✅ GRANTED</span></td><td style="color:#4ADE80;font-weight:600;">~2043</td></tr>
+          <tr><td><strong style="color:#fff;">AU 2023269880</strong></td><td>Australia</td><td class="status-cell"><span class="status-pending">🔄 PENDING</span></td><td>~2043</td></tr>
+          <tr><td><strong style="color:#fff;">PCT/US2023/019714</strong></td><td>International</td><td class="status-cell"><span class="status-pending">🔄 PCT FILED</span></td><td>~2043</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Family 4 -->
+    <div class="ip-family" style="border-color:rgba(255,184,0,0.25);">
+      <div class="ip-family-header" style="color:#FFB800;">Family 4: AZA-DMT Derivatives ⭐ NEW</div>
+      <table class="ip-table">
+        <thead><tr><th>Application / Reg. #</th><th>Jurisdiction</th><th>Status</th><th>Est. Expiry</th></tr></thead>
+        <tbody>
+          <tr><td><strong style="color:#fff;">US 63/923,194</strong></td><td>United States</td><td class="status-cell"><span class="status-provisional">🔄 PROVISIONAL</span></td><td style="color:#FFB800;font-weight:600;">~2045</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Family 5 -->
+    <div class="ip-family" style="border-color:rgba(255,184,0,0.25);">
+      <div class="ip-family-header" style="color:#FFB800;">Family 5: AZA Azetidine Psilocin Derivatives ⭐ NEW</div>
+      <table class="ip-table">
+        <thead><tr><th>Application / Reg. #</th><th>Jurisdiction</th><th>Status</th><th>Est. Expiry</th></tr></thead>
+        <tbody>
+          <tr><td><strong style="color:#fff;">US 63/923,195</strong></td><td>United States</td><td class="status-cell"><span class="status-provisional">🔄 PROVISIONAL</span></td><td style="color:#FFB800;font-weight:600;">~2045</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- AZA-DMT Callout -->
+    <div class="ip-dmt-callout">
+      <h4>AZA-DMT DERIVATIVES — A BREAKTHROUGH PIPELINE ASSET</h4>
+      <p>Azalyn's AZA-modified DMT patent (US 63/923,194) covers an entirely new compound class: aza-substituted DMT derivatives. DMT-based therapeutics represent one of the most active areas of neuropsychiatry development in 2026. Cybin's CYB004 is a DMT program. Azalyn holds patented AZA-DMT chemistry that no competitor has.</p>
+    </div>
+
+    <p class="ip-note">17 patent assets across 5 compound families. 6 granted patents spanning US, Canada, EU, Australia, and International PCT. Composition of matter protection — not method-of-use. No competitor can design around this portfolio without infringing.</p>
   </div>
   <div class="logo-mark"><span>AZ</span>ALYN</div>
   <div class="slide-num">10 / 16</div>
@@ -2218,7 +2355,7 @@
     <ul class="close-points">
       <li>
         <span class="icon">🔬</span>
-        <span><strong>Novel IP</strong> — USPTO-allowed. No competitor holds the aza-psilocin compound class. Not one.</span>
+        <span><strong>Novel IP</strong> — 17-asset global patent portfolio. 6 granted patents. US, Canada, EU, Australia. AZA-DMT derivatives — a compound class with no competitor.</span>
       </li>
       <li>
         <span class="icon">⚗️</span>
